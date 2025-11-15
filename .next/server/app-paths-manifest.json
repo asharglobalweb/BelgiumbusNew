@@ -1,0 +1,11 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/about-us/page": "app/about-us/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/corporate-events/page": "app/corporate-events/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js",
+  "/school-trips/page": "app/school-trips/page.js",
+  "/shuttles/page": "app/shuttles/page.js",
+  "/transfers/page": "app/transfers/page.js"
+}

@@ -1,0 +1,10 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/transfers/page": "/transfers",
+  "/about-us/page": "/about-us",
+  "/page": "/",
+  "/corporate-events/page": "/corporate-events",
+  "/school-trips/page": "/school-trips",
+  "/shuttles/page": "/shuttles"
+}
