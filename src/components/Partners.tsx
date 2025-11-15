@@ -9,8 +9,8 @@ import { Building2 } from "lucide-react";
 
 const partners = [
   { name: "Alpadia Language Schools", logo: "/images/partner/uefa.png" },
-  { name: "Apple", logo: "/images/partner/apple-logo-banner.avif" },
-  { name: "Nintendo", logo: "/images/partner/nintendo-logo-banner.avif" },
+  // { name: "Apple", logo: "/images/partner/apple-logo-banner.avif" },
+  // { name: "Nintendo", logo: "/images/partner/nintendo-logo-banner.avif" },
   { name: "Roland Garros", logo: "/images/partner/un.png" },
   { name: "Fnac", logo: "/images/partner/ab.png" },
   { name: "Sorbonne Université", logo: "/images/partner/ef.png" },
