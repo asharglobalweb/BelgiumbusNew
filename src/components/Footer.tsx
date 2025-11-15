@@ -28,7 +28,7 @@ export default function Footer() {
                 <div className="flex justify-center md:justify-start items-start space-x-3">
                   <MapPin className="h-6 w-6 text-blue-400 mt-0.5 flex-shrink-0" />
                   <address className="not-italic text-base">
-                    Rue d'Arenberg 3, 1000 Bruxelles, Belgium
+                    Rue d&apos;Arenberg 3, 1000 Bruxelles, Belgium
                   </address>
                 </div>
                 <div className="flex justify-center md:justify-start items-center space-x-3">

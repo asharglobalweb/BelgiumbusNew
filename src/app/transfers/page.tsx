@@ -16,7 +16,7 @@ import {
   Car,
   Wifi,
   Target,
-  Calendar,
+  
   DoorOpen,
   Coffee
 } from "lucide-react";
@@ -332,7 +332,7 @@ export default function Transfer() {
               Ready to Book Your Transfer?
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-              Let's Take You <span className="text-blue-600">Where You Need</span>
+              Let&apos;s Take You <span className="text-blue-600">Where You Need</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Get a personalized quote for your door-to-door transfer needs across Belgium

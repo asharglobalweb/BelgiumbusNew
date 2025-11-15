@@ -16,7 +16,7 @@ import {
   Bus,
   Wifi,
   Target,
-  Calendar,
+
   Clock4,
   Route
 } from "lucide-react";
@@ -332,7 +332,7 @@ export default function Shuttles() {
               Ready to Book Your Shuttle?
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-              Let's Transport Your <span className="text-blue-600">Group Safely</span>
+              Let&apos;s Transport Your <span className="text-blue-600">Group Safely</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Get a personalized quote for your shuttle transportation needs across Belgium

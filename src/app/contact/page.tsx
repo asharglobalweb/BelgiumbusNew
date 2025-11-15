@@ -9,12 +9,12 @@ import {
     Mail,
     Clock,
     MessageCircle,
-    Bus,
-    Shield,
+    
+    
     CheckCircle,
     Send,
     Building2,
-    Users,
+    
     Star
 } from "lucide-react";
 
@@ -115,7 +115,7 @@ export default function Contact() {
                             Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Book Your Ride?</span>
                         </h1>
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed animate-slide-up" style={{ animationDelay: '0.2s' }}>
-                            Let's discuss your transportation needs. Our team is ready to provide the perfect solution for your journey across Belgium.
+                            Let&apos;s discuss your transportation needs. Our team is ready to provide the perfect solution for your journey across Belgium.
                         </p>
 
                         {/* Quick Stats */}
@@ -149,7 +149,7 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <h2 className="text-3xl font-bold text-gray-900">Get Your Quote</h2>
-                                    <p className="text-gray-600">We'll get back to you within 1 hour</p>
+                                    <p className="text-gray-600">We&apos;ll get back to you within 1 hour</p>
                                 </div>
                             </div>
 
@@ -287,7 +287,7 @@ export default function Contact() {
                                         <MapPin className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
                                         <div>
                                             <p className="font-semibold text-gray-900">Main Office</p>
-                                            <p className="text-gray-600 leading-tight">Rue d'Arenberg 3,<br />1000 Bruxelles, Belgium</p>
+                                            <p className="text-gray-600 leading-tight">Rue d&apos;Arenberg 3,<br />1000 Bruxelles, Belgium</p>
                                         </div>
                                     </div>
                                     <div className="flex items-start space-x-3">
@@ -321,7 +321,7 @@ export default function Contact() {
                                         "Fully Insured Services",
                                         "Competitive Pricing",
                                         "Nationwide Coverage"
-                                    ].map((feature, index) => (
+                                    ].map((feature,) => (
                                         <div key={feature} className="flex items-center space-x-3">
                                             <CheckCircle className="h-5 w-5 text-green-300 flex-shrink-0" />
                                             <span className="text-blue-50">{feature}</span>

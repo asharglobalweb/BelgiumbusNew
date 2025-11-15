@@ -330,10 +330,10 @@ export default function SchoolTrips() {
               Ready to Plan Your School Trip?
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-              Let's Create <span className="text-blue-600">Memorable Learning Experiences</span>
+              Let&apos;s Create <span className="text-blue-600">Memorable Learning Experiences</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Get a personalized quote for your school's next educational adventure across Belgium
+              Get a personalized quote for your school&apos;s next educational adventure across Belgium
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
               <QuoteModal />

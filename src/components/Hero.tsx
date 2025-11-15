@@ -3,28 +3,28 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { MapPin, Calendar, Users, Bus, Star, Shield, Clock, Phone, ArrowRight } from "lucide-react";
+import { MapPin, Users, Bus, Star, Shield, Clock, Phone, } from "lucide-react";
 import QuoteModal from "@/components/QuoteModal";
 
 export default function Hero() {
-  const [formData, setFormData] = useState({
+  const [] = useState({
     pickup: "",
     destination: "",
     date: "",
     passengers: ""
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
+  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  //   setFormData(prev => ({
+  //     ...prev,
+  //     [e.target.name]: e.target.value
+  //   }));
+  // };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Formspree will handle the submission
-  };
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   // Formspree will handle the submission
+  // };
 
   const features = [
     { icon: Shield, text: "Fully Licensed & Insured" },
@@ -53,7 +53,7 @@ export default function Hero() {
             <div className="space-y-6">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-600 text-sm font-semibold shadow-sm animate-fade-in">
                 <Bus className="h-4 w-4 mr-2" />
-                Belgium's Leading Coach Hire Service
+                Belgium&apos;s Leading Coach Hire Service
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight animate-slide-up">
                 Premium Coach

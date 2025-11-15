@@ -124,7 +124,7 @@ export default function QuoteModal() {
               <div className="flex-1">
                 <h3 className="text-xl font-bold">Get Your Custom Quote</h3>
                 <p className="text-blue-100 text-sm mt-1">
-                  Fill out the form below and we'll get back to you within 2 hours
+                  Fill out the form below and we&apos;ll get back to you within 2 hours
                 </p>
               </div>
               <button

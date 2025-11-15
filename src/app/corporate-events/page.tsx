@@ -17,7 +17,7 @@ import {
   Wifi,
   Target,
   Briefcase,
-  Calendar
+  
 } from "lucide-react";
 import Image from "next/image";
 
@@ -331,7 +331,7 @@ export default function Corporate() {
               Ready to Elevate Your Corporate Travel?
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-              Let's Drive Your <span className="text-blue-600">Business Success</span>
+              Let&apos;s Drive Your <span className="text-blue-600">Business Success</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Get a personalized quote for your corporate transportation needs across Belgium

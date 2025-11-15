@@ -1,14 +1,14 @@
-    node_modules/
-    # Dependency directories
+# Node modules
 node_modules/
 
-# Build artifacts
+# Build output
+.next/
+out/
 build/
 dist/
-out/
 .parcel-cache/ # If using Parcel bundler
 
-# Log files
+# Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -16,29 +16,74 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Environment variables and secrets
+# Environment variables
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.env.*.local
 
-# IDE and OS-specific files
-.vscode/ # VS Code specific settings (unless shared configs are intended)
-.idea/ # IntelliJ IDEA specific settings
-.DS_Store # macOS specific
-Thumbs.db # Windows specific
+# Next.js static files
+*.next
+.next/cache/
+.next/static/
+.next/server/
 
-# Testing and coverage reports
+# Coverage reports
 coverage/
+.nyc_output/
 
-# TypeScript build info (if using TypeScript)
-.tsbuildinfo
+# TypeScript
+*.tsbuildinfo
 
-# Cache files
-.cache/
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Vim swap files
+*.swp
+*.swo
+
+# Temporary files
 tmp/
+.cache/
+*.tmp
+*.temp
 
-# Other temporary or auto-generated files
-*.swp # Vim swap files
-*.swo # Vim swap files
+# Yarn / npm / pnpm specific
+.pnp/
+.pnp.js
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# Storybook build
+.out/
+storybook-static/
+
+# ESLint cache
+.eslintcache
+
+# Testing
+jest.config.js
+jest.setup.js
+test-results/
+*.snap
+
+# Misc
+*.bak
+*.backup
+*.orig

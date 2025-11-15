@@ -86,7 +86,7 @@ export default function TestimonialSection() {
             What Our Clients Say
           </h2>
           <p className="text-gray-600 max-w-2xl text-lg">
-            Don't just take our word for it. Here's what our customers have to say about their experience with Belgium Buses.
+            Don&apos;t just take our word for it. Here&apos;s what our customers have to say about their experience with Belgium Buses.
           </p>
         </div>
 
@@ -116,7 +116,7 @@ export default function TestimonialSection() {
             >
               {/* Testimonial Text */}
               <p className="text-gray-700 mb-6 flex-grow text-lg leading-relaxed italic">
-                "{t.message}"
+                {`"${t.message}"`}
               </p>
               
               {/* Stars */}
