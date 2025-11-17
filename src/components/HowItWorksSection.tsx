@@ -105,7 +105,7 @@ export default function HowItWorks() {
         </div>
 
         {/* Mobile Timeline Indicator */}
-        {isMobile && (
+        {/* {isMobile && (
           <div className="flex justify-center mb-8">
             <div className="flex space-x-2">
               {steps.map((_, index) => (
@@ -119,7 +119,7 @@ export default function HowItWorks() {
               ))}
             </div>
           </div>
-        )}
+        )} */}
 
         {/* Vertical Timeline Steps */}
         <div className="relative">
