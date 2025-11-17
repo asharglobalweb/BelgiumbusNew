@@ -53,14 +53,14 @@ export default function HowItWorks() {
   }, []);
 
   // Scroll to step function for mobile dots
-  const scrollToStep = (index: number) => {
-    if (stepRefs[index]?.current) {
-      stepRefs[index].current?.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'center' 
-      });
-    }
-  };
+  // const scrollToStep = (index: number) => {
+  //   if (stepRefs[index]?.current) {
+  //     stepRefs[index].current?.scrollIntoView({ 
+  //       behavior: 'smooth', 
+  //       block: 'center' 
+  //     });
+  //   }
+  // };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
