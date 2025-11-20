@@ -27,7 +27,7 @@ export default function Hero() {
   // };
 
   const features = [
-    { icon: Shield, text: "Fully Licensed & Insured" },
+    { icon: Shield, text: "Licensed & Insured" },
     { icon: Clock, text: "Punctual Service" },
     { icon: Users, text: "Professional Drivers" },
     { icon: Star, text: "5-Star Rated" }
@@ -61,8 +61,8 @@ export default function Hero() {
                 in Belgium
               </h1>
               <p className="text-xl text-gray-600 max-w-2xl leading-relaxed animate-slide-up" style={{animationDelay: '0.2s'}}>
-                Discover reliable and affordable coach and minibus hire in Belgium with Belgium Buses — 
-                ideal for corporate events, school trips, airport transfers, private tours, and group travel across the country.
+                Discover reliable and affordable coach and minibus hire in Belgium with Belgium Bus Rentals.
+                Ideal for corporate events, school trips, airport transfers, private tours, and group travel across the country.
               </p>
             </div>
 
@@ -122,7 +122,7 @@ export default function Hero() {
             </div>
 
             {/* Floating Cards */}
-            <div className="absolute -top-4 -left-4 bg-white rounded-2xl shadow-2xl p-6 transform rotate-3 hover:rotate-0 transition-transform duration-300 border border-gray-100 animate-pulse-slow">
+            <div className="absolute -top-7 -left-4 bg-white rounded-2xl shadow-2xl p-6 transform rotate-3 hover:rotate-0 transition-transform duration-300 border border-gray-100 animate-pulse-slow">
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
                   <Users className="h-6 w-6 text-green-600" />
@@ -134,7 +134,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-2xl p-6 transform -rotate-3 hover:rotate-0 transition-transform duration-300 border border-gray-100 animate-pulse-slow" style={{animationDelay: '1s'}}>
+            <div className="absolute -bottom-7 -right-4 bg-white rounded-2xl shadow-2xl p-6 transform -rotate-3 hover:rotate-0 transition-transform duration-300 border border-gray-100 animate-pulse-slow" style={{animationDelay: '1s'}}>
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
                   <MapPin className="h-6 w-6 text-blue-600" />

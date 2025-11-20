@@ -12,7 +12,7 @@ import {
   DollarSign,
   ThumbsUp,
   ChevronDown,
-  ChevronUp
+  
 } from "lucide-react";
 
 export default function WhyChooseUs() {
@@ -82,7 +82,7 @@ export default function WhyChooseUs() {
             </span>
             
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
-              The Belgium Buses <span className="text-blue-600">Advantage</span>
+              The Belgium Bus Rental <span className="text-blue-600">Advantage</span>
             </h2>
             
             <p className="text-gray-600 leading-relaxed">
@@ -106,7 +106,7 @@ export default function WhyChooseUs() {
                 {/* Accordion Header */}
                 <button
                   onClick={() => toggleItem(index)}
-                  className={`w-full p-4 text-left flex items-center justify-between transition-all duration-200 ${
+                  className={`w-full p-4 text-left flex items-center justify-between transition-all duration-300 ${
                     openItems.includes(index) || hoveredItem === index 
                       ? 'bg-blue-50/50' 
                       : 'hover:bg-gray-50/50'
@@ -122,7 +122,7 @@ export default function WhyChooseUs() {
                     </div>
                     
                     <div className="flex-1 min-w-0">
-                      <h3 className={`font-semibold text-base mb-1 transition-colors ${
+                      <h3 className={`font-semibold text-base mb-1 transition-colors duration-300 ${
                         openItems.includes(index) || hoveredItem === index 
                           ? 'text-blue-600' 
                           : 'text-gray-900 group-hover:text-blue-600'
@@ -136,34 +136,36 @@ export default function WhyChooseUs() {
                   </div>
 
                   <div className="flex-shrink-0 ml-4">
-                    {openItems.includes(index) ? (
-                      <ChevronUp className={`h-4 w-4 transition-colors duration-300 ${
-                        openItems.includes(index) || hoveredItem === index 
-                          ? 'text-blue-500' 
-                          : 'text-gray-400'
-                      }`} />
-                    ) : (
-                      <ChevronDown className={`h-4 w-4 transition-colors duration-300 ${
-                        hoveredItem === index ? 'text-blue-500' : 'text-gray-400'
-                      }`} />
-                    )}
+                    <div className={`transition-transform duration-500 ease-in-out ${
+                      openItems.includes(index) ? 'rotate-180' : 'rotate-0'
+                    }`}>
+                      <ChevronDown className="h-4 w-4 text-gray-400" />
+                    </div>
                   </div>
                 </button>
 
                 {/* Accordion Content */}
                 <div 
-                  className={`transition-all duration-300 ease-in-out ${
+                  className={`grid transition-all duration-500 ease-in-out ${
                     openItems.includes(index) 
-                      ? 'max-h-96 opacity-100' 
-                      : 'max-h-0 opacity-0'
-                  } overflow-hidden`}
+                      ? 'grid-rows-[1fr] opacity-100' 
+                      : 'grid-rows-[0fr] opacity-0'
+                  }`}
                 >
-                  <div className="px-4 pb-4">
-                    <div className="pl-16 pr-4">
-                      <div className="border-t border-gray-100 pt-4">
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                          {feature.content}
-                        </p>
+                  <div className="overflow-hidden">
+                    <div 
+                      className={`px-4 pb-4 transition-all duration-500 ${
+                        openItems.includes(index) 
+                          ? 'translate-y-0 delay-150' 
+                          : 'translate-y-4'
+                      }`}
+                    >
+                      <div className="pl-16 pr-4">
+                        <div className="border-t border-gray-100 pt-4">
+                          <p className="text-gray-600 text-sm leading-relaxed">
+                            {feature.content}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -206,10 +208,10 @@ export default function WhyChooseUs() {
             </div>
             
             {/* Floating Badge 1 */}
-            <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-3 border border-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-xl group/badge">
+            <div className="absolute -bottom-1 -left-4 bg-white rounded-xl shadow-lg p-5 border border-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-xl group/badge">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center group-hover/badge:scale-110 transition-transform duration-300">
-                  <CheckCircle className="h-4 w-4 text-green-600" />
+                <div className="w-9 h-9 bg-green-100 rounded-lg flex items-center justify-center group-hover/badge:scale-110 transition-transform duration-300">
+                  <CheckCircle className="h-5 w-5 text-green-600" />
                 </div>
                 <div>
                   <p className="text-sm font-bold text-gray-900">50+</p>
@@ -219,10 +221,10 @@ export default function WhyChooseUs() {
             </div>
 
             {/* Floating Badge 2 */}
-            <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg p-3 border border-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-xl group/badge">
+            <div className="absolute -top-1 -right-4 bg-white rounded-xl shadow-lg p-5 border border-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-xl group/badge">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center group-hover/badge:scale-110 transition-transform duration-300">
-                  <ShieldCheck className="h-4 w-4 text-blue-600" />
+                <div className="w-9 h-9 bg-blue-100 rounded-lg flex items-center justify-center group-hover/badge:scale-110 transition-transform duration-300">
+                  <ShieldCheck className="h-5 w-5 text-blue-600" />
                 </div>
                 <div>
                   <p className="text-sm font-bold text-gray-900">100%</p>

@@ -283,3 +283,33 @@ a:focus-visible {
   background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
   background-size: 800px 104px;
 }
+/* Ensure consistent form styling */
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Modal consistency */
+.fixed {
+  position: fixed !important;
+}
+
+.z-50 {
+  z-index: 50 !important;
+}
+
+/* Form alignment fixes */
+.form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 640px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,11 +1,12 @@
 {
   "/_not-found/page": "/_not-found",
   "/favicon.ico/route": "/favicon.ico",
-  "/contact/page": "/contact",
   "/about-us/page": "/about-us",
   "/corporate-events/page": "/corporate-events",
-  "/page": "/",
-  "/shuttles/page": "/shuttles",
   "/school-trips/page": "/school-trips",
-  "/transfers/page": "/transfers"
+  "/fleet/page": "/fleet",
+  "/shuttles/page": "/shuttles",
+  "/transfers/page": "/transfers",
+  "/contact/page": "/contact",
+  "/page": "/"
 }

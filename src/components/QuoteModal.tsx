@@ -187,6 +187,28 @@ export default function QuoteModal() {
         .fixed {
           position: fixed !important;
         }
+
+        /* Consistent form styling */
+        input, select, textarea {
+          font-family: inherit;
+          font-size: inherit;
+          box-sizing: border-box;
+        }
+
+        .form-grid {
+          display: grid;
+          gap: 1rem;
+        }
+
+        .form-grid-2 {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 640px) {
+          .form-grid-2 {
+            grid-template-columns: 1fr;
+          }
+        }
       `}</style>
     </>
   );

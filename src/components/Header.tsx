@@ -4,13 +4,14 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, ChevronRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -33,12 +34,21 @@ export default function Header() {
         { name: "Shuttles", href: "/shuttles" }
       ]
     },
+    { name: "Fleet", href: "/fleet" },
     { name: "About Us", href: "/about-us" },
     { name: "Contact", href: "/contact" }
   ];
 
   const linkClasses = (href: string) => {
     const base = "px-4 py-2 rounded-lg text-base font-medium transition-all duration-300";
+    const isActive = pathname === href;
+    return isActive
+      ? `${base} text-blue-600 bg-blue-50 font-semibold`
+      : `${base} text-gray-700 hover:text-blue-600 hover:bg-gray-50`;
+  };
+
+  const mobileLinkClasses = (href: string) => {
+    const base = "px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 flex items-center justify-between";
     const isActive = pathname === href;
     return isActive
       ? `${base} text-blue-600 bg-blue-50 font-semibold`
@@ -56,7 +66,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3 group">
-          <div className="relative w-48 h-12 transition-transform duration-300 group-hover:scale-105">
+          <div className="relative w-48 h-18 transition-transform duration-300 group-hover:scale-105">
             <Image
               src="/images/logo2.png"
               fill
@@ -131,46 +141,83 @@ export default function Header() {
       {/* Mobile Navigation */}
       <div
         className={`lg:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg shadow-xl border-t border-gray-200 transition-all duration-300 ${
-          mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+          mobileOpen 
+            ? "max-h-screen opacity-100 visible" 
+            : "max-h-0 opacity-0 invisible"
         }`}
+        style={{
+          height: mobileOpen ? 'auto' : '0',
+          overflow: mobileOpen ? 'visible' : 'hidden'
+        }}
       >
-        <div className="px-4 py-6 space-y-2">
+        <nav className="px-4 py-6 space-y-2">
           {navigation.map((item) => (
             <div key={item.href}>
-              <Link
-                href={item.href}
-                className={linkClasses(item.href) + " block"}
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.name}
-              </Link>
-              {item.submenu && (
-                <div className="ml-6 mt-2 space-y-1">
-                  {item.submenu.map((subItem) => (
-                    <Link
-                      key={subItem.href}
-                      href={subItem.href}
-                      className="block px-4 py-2 text-sm text-gray-600 hover:text-blue-600 transition-colors border-l-2 border-gray-200 hover:border-blue-600"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {subItem.name}
-                    </Link>
-                  ))}
-                </div>
+              {item.submenu ? (
+                <>
+                  {/* Services dropdown trigger for mobile */}
+                  <button
+                    className={mobileLinkClasses(item.href)}
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  >
+                    <span>{item.name}</span>
+                    <ChevronDown 
+                      className={`h-4 w-4 transition-transform duration-300 ${
+                        mobileServicesOpen ? 'rotate-180' : ''
+                      }`} 
+                    />
+                  </button>
+                  
+                  {/* Services dropdown content for mobile */}
+                  <div
+                    className={`transition-all duration-300 overflow-hidden ${
+                      mobileServicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <div className="ml-4 mt-2 space-y-1 border-l-2 border-gray-200 pl-4">
+                      {item.submenu.map((subItem) => (
+                        <Link
+                          key={subItem.href}
+                          href={subItem.href}
+                          className="flex items-center space-x-2 px-4 py-3 text-gray-600 hover:text-blue-600 transition-colors rounded-lg hover:bg-blue-50 group"
+                          onClick={() => {
+                            setMobileOpen(false);
+                            setMobileServicesOpen(false);
+                          }}
+                        >
+                          <ChevronRight className="h-3 w-3 text-gray-400 group-hover:text-blue-600 transition-colors" />
+                          <span>{subItem.name}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <Link
+                  href={item.href}
+                  className={mobileLinkClasses(item.href)}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <span>{item.name}</span>
+                </Link>
               )}
             </div>
           ))}
 
           {/* Mobile Contact */}
-          <div className="pt-4 border-t border-gray-200">
-            <div className="flex items-center space-x-2 text-gray-700 mb-4 bg-blue-50 p-4 rounded-lg">
+          <div className="pt-4 border-t border-gray-200 mt-4">
+            <div className="flex items-center space-x-2 text-gray-700 bg-blue-50 p-4 rounded-lg">
               <Phone className="h-5 w-5 text-blue-600" />
-              <a href="tel:+442038343226" className="font-semibold text-lg">
+              <a 
+                href="tel:+442038343226" 
+                className="font-semibold text-lg hover:text-blue-600 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
                 +44 20 3834 3226
               </a>
             </div>
           </div>
-        </div>
+        </nav>
       </div>
     </header>
   );

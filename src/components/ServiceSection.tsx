@@ -10,6 +10,7 @@ import {
   Building2,
   Plane,
   Home,
+  ChevronDown,
 } from "lucide-react";
 
 const services = [
@@ -87,6 +88,7 @@ const services = [
 
 export default function ServicesSection() {
   const [active, setActive] = useState(services[0].key);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const current = services.find((s) => s.key === active)!;
 
   return (
@@ -117,24 +119,69 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Service Tabs */}
+        {/* Service Selection - Desktop Tabs & Mobile Dropdown */}
         <div
-          className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in"
+          className="mb-12 animate-fade-in"
           style={{ animationDelay: "0.4s" }}
         >
-          {services.map((service) => (
-            <button
-              key={service.key}
-              onClick={() => setActive(service.key)}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-xl border transition-all duration-300 font-medium transform hover:-translate-y-1 ${active === service.key
-                  ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-blue-600 shadow-lg scale-105"
-                  : "bg-white text-gray-700 border-gray-300 hover:border-blue-500 hover:shadow-md"
+          {/* Desktop Tabs (hidden on mobile) */}
+          <div className="hidden md:flex flex-wrap justify-center gap-3">
+            {services.map((service) => (
+              <button
+                key={service.key}
+                onClick={() => setActive(service.key)}
+                className={`flex items-center space-x-2 px-6 py-3 rounded-xl border transition-all duration-300 font-medium transform hover:-translate-y-1 ${
+                  active === service.key
+                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-blue-600 shadow-lg scale-105"
+                    : "bg-white text-gray-700 border-gray-300 hover:border-blue-500 hover:shadow-md"
                 }`}
+              >
+                <service.icon className="h-5 w-5" />
+                <span>{service.title}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile Dropdown (hidden on desktop) */}
+          <div className="md:hidden relative">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="w-full flex items-center justify-between px-6 py-4 bg-white border border-gray-300 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 font-medium text-gray-700"
             >
-              <service.icon className="h-5 w-5" />
-              <span>{service.title}</span>
+              <div className="flex items-center space-x-3">
+                <current.icon className="h-5 w-5 text-blue-600" />
+                <span>{current.title}</span>
+              </div>
+              <ChevronDown 
+                className={`h-5 w-5 text-gray-500 transition-transform duration-300 ${
+                  isDropdownOpen ? "rotate-180" : ""
+                }`} 
+              />
             </button>
-          ))}
+
+            {/* Dropdown Menu */}
+            {isDropdownOpen && (
+              <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-300 rounded-xl shadow-lg z-20 overflow-hidden">
+                {services.map((service) => (
+                  <button
+                    key={service.key}
+                    onClick={() => {
+                      setActive(service.key);
+                      setIsDropdownOpen(false);
+                    }}
+                    className={`w-full flex items-center space-x-3 px-6 py-4 text-left transition-colors duration-200 ${
+                      active === service.key
+                        ? "bg-blue-50 text-blue-600 font-semibold"
+                        : "text-gray-700 hover:bg-gray-50"
+                    }`}
+                  >
+                    <service.icon className="h-5 w-5" />
+                    <span>{service.title}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Service Content */}

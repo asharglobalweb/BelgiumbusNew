@@ -12,8 +12,8 @@ const jostSans = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Belgium Buses",
-  description: "Belgium Buses",
+  title: "Belgium Bus Rental",
+  description: "Belgium Bus Rental",
 };
 
 export default function RootLayout({
