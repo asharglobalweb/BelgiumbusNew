@@ -1,4 +1,3 @@
-// components/Header.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -26,7 +25,7 @@ export default function Header() {
     { name: "Home", href: "/" },
     { 
       name: "Services", 
-      href: "#services",
+      href: "/services", // Changed from "#services" to actual page
       submenu: [
         { name: "Corporate Events", href: "/corporate-events" },
         { name: "School Trips", href: "/school-trips" },
@@ -39,18 +38,36 @@ export default function Header() {
     { name: "Contact", href: "/contact" }
   ];
 
-  const linkClasses = (href: string) => {
+  // Check if a navigation item is active
+  const isActive = (href: string, submenu?: any[]) => {
+    // Exact match
+    if (pathname === href) return true;
+    
+    // For Services and its submenu items
+    if (submenu) {
+      return submenu.some(item => pathname === item.href);
+    }
+    
+    // For other pages, check if pathname starts with href (for nested routes)
+    if (href !== "/") {
+      return pathname.startsWith(href);
+    }
+    
+    return false;
+  };
+
+  const linkClasses = (href: string, submenu?: any[]) => {
     const base = "px-4 py-2 rounded-lg text-base font-medium transition-all duration-300";
-    const isActive = pathname === href;
-    return isActive
+    const active = isActive(href, submenu);
+    return active
       ? `${base} text-blue-600 bg-blue-50 font-semibold`
       : `${base} text-gray-700 hover:text-blue-600 hover:bg-gray-50`;
   };
 
-  const mobileLinkClasses = (href: string) => {
+  const mobileLinkClasses = (href: string, submenu?: any[]) => {
     const base = "px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 flex items-center justify-between";
-    const isActive = pathname === href;
-    return isActive
+    const active = isActive(href, submenu);
+    return active
       ? `${base} text-blue-600 bg-blue-50 font-semibold`
       : `${base} text-gray-700 hover:text-blue-600 hover:bg-gray-50`;
   };
@@ -71,7 +88,7 @@ export default function Header() {
               src="/images/logo2.png"
               fill
               className="object-contain"
-              alt="Belgium Buses - Premium Coach Hire Services"
+              alt="Australia Bus Rental - Premium Coach Hire Services"
               priority
             />
           </div>
@@ -88,7 +105,7 @@ export default function Header() {
             >
               {item.submenu ? (
                 <>
-                  <button className={`${linkClasses(item.href)} flex items-center gap-1`}>
+                  <button className={`${linkClasses(item.href, item.submenu)} flex items-center gap-1`}>
                     {item.name}
                     <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
                   </button>
@@ -99,7 +116,11 @@ export default function Header() {
                       <Link
                         key={subItem.href}
                         href={subItem.href}
-                        className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors first:rounded-t-xl last:rounded-b-xl"
+                        className={`block px-4 py-3 transition-colors first:rounded-t-xl last:rounded-b-xl ${
+                          pathname === subItem.href
+                            ? "text-blue-600 bg-blue-50 font-semibold"
+                            : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                        }`}
                       >
                         {subItem.name}
                       </Link>
@@ -157,7 +178,7 @@ export default function Header() {
                 <>
                   {/* Services dropdown trigger for mobile */}
                   <button
-                    className={mobileLinkClasses(item.href)}
+                    className={mobileLinkClasses(item.href, item.submenu)}
                     onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                   >
                     <span>{item.name}</span>
@@ -179,7 +200,11 @@ export default function Header() {
                         <Link
                           key={subItem.href}
                           href={subItem.href}
-                          className="flex items-center space-x-2 px-4 py-3 text-gray-600 hover:text-blue-600 transition-colors rounded-lg hover:bg-blue-50 group"
+                          className={`flex items-center space-x-2 px-4 py-3 transition-colors rounded-lg group ${
+                            pathname === subItem.href
+                              ? "text-blue-600 bg-blue-50 font-semibold"
+                              : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"
+                          }`}
                           onClick={() => {
                             setMobileOpen(false);
                             setMobileServicesOpen(false);
@@ -221,4 +246,4 @@ export default function Header() {
       </div>
     </header>
   );
-}
+}   
