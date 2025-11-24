@@ -6,6 +6,17 @@ import Image from "next/image";
 import { Menu, X, Phone, ChevronDown, ChevronRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 
+interface SubmenuItem {
+  name: string;
+  href: string;
+}
+
+interface NavigationItem {
+  name: string;
+  href: string;
+  submenu?: SubmenuItem[];
+}
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -21,11 +32,11 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navigation = [
+  const navigation: NavigationItem[] = [
     { name: "Home", href: "/" },
     { 
       name: "Services", 
-      href: "/services", // Changed from "#services" to actual page
+      href: "/services",
       submenu: [
         { name: "Corporate Events", href: "/corporate-events" },
         { name: "School Trips", href: "/school-trips" },
@@ -39,7 +50,7 @@ export default function Header() {
   ];
 
   // Check if a navigation item is active
-  const isActive = (href: string, submenu?: any[]) => {
+  const isActive = (href: string, submenu?: SubmenuItem[]) => {
     // Exact match
     if (pathname === href) return true;
     
@@ -56,7 +67,7 @@ export default function Header() {
     return false;
   };
 
-  const linkClasses = (href: string, submenu?: any[]) => {
+  const linkClasses = (href: string, submenu?: SubmenuItem[]) => {
     const base = "px-4 py-2 rounded-lg text-base font-medium transition-all duration-300";
     const active = isActive(href, submenu);
     return active
@@ -64,7 +75,7 @@ export default function Header() {
       : `${base} text-gray-700 hover:text-blue-600 hover:bg-gray-50`;
   };
 
-  const mobileLinkClasses = (href: string, submenu?: any[]) => {
+  const mobileLinkClasses = (href: string, submenu?: SubmenuItem[]) => {
     const base = "px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 flex items-center justify-between";
     const active = isActive(href, submenu);
     return active
@@ -246,4 +257,4 @@ export default function Header() {
       </div>
     </header>
   );
-}   
+}
