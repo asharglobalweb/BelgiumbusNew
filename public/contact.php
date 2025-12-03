@@ -137,7 +137,7 @@ if ($form_type === 'contact_page') {
             </div>
             <div class='footer'>
                 <p>This email was sent from the contact form on Belgium Bus Rental website.</p>
-                <p>Received at: " . date('Y-m-d H:i:s') . "</p>
+                <p>Received at: " . date('d-m-Y H:i:s') . "</p>
             </div>
         </div>
     </body>
