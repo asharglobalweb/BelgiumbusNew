@@ -82,11 +82,11 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up" style={{animationDelay: '0.6s'}}>
               <QuoteModal />
               <a 
-                href="tel:+442038343226"
+                href="tel:+442038343211"
                 className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group"
               >
                 <Phone className="h-5 w-5 mr-2 group-hover:animate-pulse" />
-                Call +44 20 3834 3226
+                Call +44 203 834 3211
               </a>
             </div>
 

@@ -563,8 +563,8 @@ export default function Contact() {
       icon: Phone,
       title: "Call Us",
       description: "Speak directly with our team",
-      details: "+442038343226",
-      action: "tel:+442038343226",
+      details: "+44 203 834 3211",
+      action: "tel:+442038343211",
       color: "text-green-600",
       bgColor: "bg-green-100",
     },
@@ -1006,7 +1006,7 @@ export default function Contact() {
                       <p className="font-semibold text-gray-900">
                         Phone Support
                       </p>
-                      <p className="text-gray-600">+442038343226</p>
+                      <p className="text-gray-600">+44 203 834 3211</p>
                     </div>
                   </div>
                 </div>

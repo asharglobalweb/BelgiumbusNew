@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function Footer() {
   // const icons = [
-  //   { Icon: FaWhatsapp, href: "https://wa.me/442038343226", id: "1" },
+  //   { Icon: FaWhatsapp, href: "https://wa.me/442038343211", id: "1" },
   // ];
 
   return (
@@ -32,7 +32,7 @@ export default function Footer() {
                 </div>
                 <div className="flex justify-center md:justify-start items-center space-x-3">
                   <Phone className="h-6 w-6 text-blue-400" />
-                  <a href="tel:+442038343226" className="text-base hover:text-white transition-colors">+44 20 3834 3226</a>
+                  <a href="tel:+442038343211" className="text-base hover:text-white transition-colors">+44 203 834 3211</a>
                 </div>
                 <div className="flex justify-center md:justify-start items-center space-x-3">
                   <Mail className="h-6 w-6 text-blue-400" />

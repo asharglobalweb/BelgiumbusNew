@@ -145,11 +145,11 @@ export default function QuoteModal() {
                 <div className="mt-6 pt-6 border-t border-gray-200 text-center">
                   <p className="text-sm text-gray-600 mb-3">Prefer to call?</p>
                   <a 
-                    href="tel:+442038343226"
+                    href="tel:+442038343211"
                     className="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-105 group"
                   >
                     <Phone className="h-4 w-4 mr-2 group-hover:animate-pulse" />
-                    Call +44 20 3834 3226
+                    Call +44 203 834 3211
                   </a>
                 </div>
               </div>

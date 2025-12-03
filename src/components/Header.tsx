@@ -152,10 +152,10 @@ export default function Header() {
           <div className="flex items-center space-x-2 text-gray-700 bg-blue-50 px-6 py-3 rounded-xl hover:bg-blue-100 transition-all duration-300 group">
             <Phone className="h-5 w-5 text-blue-600 group-hover:scale-110 transition-transform" />
             <a
-              href="tel:+442038343226"
+              href="tel:+442038343211"
               className="font-semibold hover:text-blue-600 transition-colors text-lg"
             >
-              +44 20 3834 3226
+              +44 203 834 3211
             </a>
           </div>
         </div>
@@ -245,11 +245,11 @@ export default function Header() {
             <div className="flex items-center space-x-2 text-gray-700 bg-blue-50 p-4 rounded-lg">
               <Phone className="h-5 w-5 text-blue-600" />
               <a 
-                href="tel:+442038343226" 
+                href="tel:+442038343211" 
                 className="font-semibold text-lg hover:text-blue-600 transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
-                +44 20 3834 3226
+                +44 203 834 3211
               </a>
             </div>
           </div>

@@ -25,8 +25,8 @@ export default function ServicesHero({ title, span, subTitle, image }: Service) 
           </div>
           <p className="text-gray-700 max-w-md">
             Or speak to one of our team on{" "}
-            <a href="tel:+442038343226">
-              <span className="text-primary max-w-md">+44 20 3834 3226</span>
+            <a href="tel:+442038343211">
+              <span className="text-primary max-w-md">+44 203 834 3211</span>
             </a>
           </p>
         </div>

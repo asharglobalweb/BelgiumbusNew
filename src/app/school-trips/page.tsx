@@ -338,7 +338,7 @@ export default function SchoolTrips() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
               <QuoteModal />
               <a 
-                href="tel:+442038343226"
+                href="tel:+442038343211"
                 className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-105 group"
               >
                 <GraduationCap className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
