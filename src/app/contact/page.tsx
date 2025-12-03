@@ -39,6 +39,10 @@ export default function Contact() {
     service: "",
     passengers: "",
     date: "",
+    time: "", // Added time field
+    returnDate: "",
+    returnTime: "", // Added return time field
+    hasReturnDate: false,
     message: "",
   });
   const [submitting, setSubmitting] = useState(false);
@@ -306,11 +310,6 @@ export default function Contact() {
       country.code.includes(searchQuery)
   );
 
-  // Get selected country name
-  //   const selectedCountry = countryCodes.find(
-  //     (country) => country.code === formData.countryCode
-  //   );
-
   // Load reCAPTCHA - REPLACE WITH YOUR ACTUAL SITE KEY
   useEffect(() => {
     const loadRecaptcha = () => {
@@ -429,6 +428,17 @@ export default function Contact() {
       }
     }
 
+    // Return date validation
+    if (formData.hasReturnDate && formData.returnDate) {
+      const returnDate = new Date(formData.returnDate);
+      const travelDate = new Date(formData.date);
+      
+      if (returnDate < travelDate) {
+        toast.error("Return date must be after travel date");
+        return;
+      }
+    }
+
     // Basic validation
     if (
       !formData.name ||
@@ -470,6 +480,10 @@ export default function Contact() {
       formDataToSend.append("service", formData.service);
       formDataToSend.append("passengers", formData.passengers);
       formDataToSend.append("date", formData.date);
+      formDataToSend.append("time", formData.time); // Added time
+      formDataToSend.append("returnDate", formData.returnDate);
+      formDataToSend.append("returnTime", formData.returnTime); // Added return time
+      formDataToSend.append("hasReturnDate", formData.hasReturnDate.toString());
       formDataToSend.append("message", formData.message);
       formDataToSend.append("recaptcha_token", recaptchaToken);
       formDataToSend.append("form_type", "contact_page");
@@ -503,6 +517,10 @@ export default function Contact() {
           service: "",
           passengers: "",
           date: "",
+          time: "", // Reset time
+          returnDate: "",
+          returnTime: "", // Reset return time
+          hasReturnDate: false,
           message: "",
         });
       } else {
@@ -842,6 +860,73 @@ export default function Contact() {
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
                     />
                   </div>
+                </div>
+
+                {/* Added Time Input */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Pickup Time
+                  </label>
+                  <input
+                    type="time"
+                    name="time"
+                    value={formData.time}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                  />
+                </div>
+
+                {/* Return Date Section */}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <input
+                      type="checkbox"
+                      id="hasReturnDate"
+                      checked={formData.hasReturnDate}
+                      onChange={(e) => {
+                        setFormData({
+                          ...formData,
+                          hasReturnDate: e.target.checked,
+                          returnDate: e.target.checked ? formData.returnDate : "",
+                          returnTime: e.target.checked ? formData.returnTime : "",
+                        });
+                      }}
+                      className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    />
+                    <label htmlFor="hasReturnDate" className="text-sm font-medium text-gray-700">
+                      Return Trip
+                    </label>
+                  </div>
+
+                  {formData.hasReturnDate && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Return Date
+                        </label>
+                        <input
+                          type="date"
+                          name="returnDate"
+                          value={formData.returnDate}
+                          onChange={handleChange}
+                          min={formData.date || minDate}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Return Time
+                        </label>
+                        <input
+                          type="time"
+                          name="returnTime"
+                          value={formData.returnTime}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                        />
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div>

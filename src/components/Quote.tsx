@@ -14,6 +14,7 @@ import {
   CheckCircle,
   ChevronDown,
   Search,
+  Clock,
 } from "lucide-react";
 
 // Proper reCAPTCHA and Google Maps type declaration
@@ -251,6 +252,10 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
     pickup: "",
     destination: "",
     date: "",
+    time: "",
+    returnDate: "",
+    returnTime: "",
+    hasReturnDate: false,
     passengers: "",
     message: "",
   });
@@ -293,7 +298,9 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         if (pickupInputRef.current) {
           // Clear existing autocomplete if any
           if (pickupAutocompleteRef.current) {
-            google.maps.event.clearInstanceListeners(pickupAutocompleteRef.current);
+            google.maps.event.clearInstanceListeners(
+              pickupAutocompleteRef.current
+            );
           }
 
           pickupAutocompleteRef.current = new google.maps.places.Autocomplete(
@@ -325,26 +332,27 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
             );
           }
 
-          destinationAutocompleteRef.current = new google.maps.places.Autocomplete(
-            destinationInputRef.current,
-            {
+          destinationAutocompleteRef.current =
+            new google.maps.places.Autocomplete(destinationInputRef.current, {
               bounds: defaultBounds || undefined,
               fields: ["formatted_address", "geometry", "name"],
               types: ["establishment", "geocode"],
+            });
+
+          destinationAutocompleteRef.current.addListener(
+            "place_changed",
+            () => {
+              const place = destinationAutocompleteRef.current?.getPlace();
+              if (place && place.formatted_address) {
+                setFormData((prev) => ({
+                  ...prev,
+                  destination: place.formatted_address as string,
+                }));
+              }
             }
           );
-
-          destinationAutocompleteRef.current.addListener("place_changed", () => {
-            const place = destinationAutocompleteRef.current?.getPlace();
-            if (place && place.formatted_address) {
-              setFormData((prev) => ({
-                ...prev,
-                destination: place.formatted_address as string,
-              }));
-            }
-          });
         }
-        
+
         console.log("Autocomplete initialized successfully");
       } catch (error) {
         console.error("Error initializing autocomplete:", error);
@@ -397,7 +405,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
       const existingScript = document.querySelector(
         'script[src*="maps.googleapis.com"]'
       ) as HTMLScriptElement;
-      
+
       if (existingScript) {
         console.log("Google Maps script already exists");
         // If script exists but Google isn't loaded, wait for it
@@ -408,7 +416,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
               initializeAutocomplete();
             }
           }, 100);
-          
+
           setTimeout(() => {
             clearInterval(waitForLoad);
             if (!window.google?.maps?.places) {
@@ -509,21 +517,25 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
         // Method 1: Try IP-based geolocation with timeout
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 5000);
-        
+
         const ipResponse = await fetch("https://ipapi.co/json/", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
-          signal: controller.signal
+          signal: controller.signal,
         });
-        
+
         clearTimeout(timeoutId);
-        
+
         if (ipResponse.ok) {
           const ipData = await ipResponse.json();
           detectedCountryCode = ipData.country_code;
-          console.log("IP-based detection:", ipData.country_code, ipData.country_name);
+          console.log(
+            "IP-based detection:",
+            ipData.country_code,
+            ipData.country_name
+          );
         }
       } catch {
         console.log("IP geolocation failed, using fallback methods");
@@ -565,7 +577,12 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
 
             detectedCountryCode = timezoneToCountry[timezone] || "";
             if (detectedCountryCode) {
-              console.log("Timezone detection:", timezone, "->", detectedCountryCode);
+              console.log(
+                "Timezone detection:",
+                timezone,
+                "->",
+                detectedCountryCode
+              );
             }
           }
         } catch {
@@ -579,7 +596,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           const languages = navigator.languages || [navigator.language];
           for (const lang of languages) {
             const countryCode = lang.split("-")[1]?.toUpperCase();
-            if (countryCode && countries.some(c => c.code === countryCode)) {
+            if (countryCode && countries.some((c) => c.code === countryCode)) {
               detectedCountryCode = countryCode;
               console.log("Language detection:", lang, "->", countryCode);
               break;
@@ -605,10 +622,11 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
 
       // Final fallback based on timezone hint for Middle East
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      const isMiddleEast = timezone?.includes("Dubai") || 
-                          timezone?.includes("Abu_Dhabi") || 
-                          timezone?.includes("Qatar") || 
-                          timezone?.includes("Riyadh");
+      const isMiddleEast =
+        timezone?.includes("Dubai") ||
+        timezone?.includes("Abu_Dhabi") ||
+        timezone?.includes("Qatar") ||
+        timezone?.includes("Riyadh");
 
       if (isMiddleEast) {
         const uaeCountry = countries.find((country) => country.code === "AE");
@@ -625,6 +643,14 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+
+      const phoneInput = document.querySelector('input[name="phone"]');
+      if (phoneInput && phoneInput.contains(event.target as Node)) {
+      setShowCountryDropdown(false);
+      setSearchQuery("");
+      return;
+      }
+
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
@@ -675,19 +701,37 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
     if (!formData.company) {
       newErrors.company = "Company/School is required";
     }
-    
+
     // FIXED DATE VALIDATION: Only validate if date is provided
     if (formData.date) {
-      const selectedDate = new Date(formData.date);
+      const selectedDate = new Date(formData.date + "T00:00:00");
       const today = new Date();
-      
+
       // Reset both dates to start of day for accurate comparison
-      const selectedDateStart = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
-      const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-      
+      const selectedDateStart = new Date(
+        selectedDate.getFullYear(),
+        selectedDate.getMonth(),
+        selectedDate.getDate()
+      );
+      const todayStart = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate()
+      );
+
       // Compare timestamps - only show error if selected date is BEFORE today
       if (selectedDateStart.getTime() < todayStart.getTime()) {
         newErrors.date = "Please select today or a future date";
+      }
+    }
+
+    // Return date validation
+    if (formData.hasReturnDate && formData.returnDate) {
+      const returnDate = new Date(formData.returnDate + "T00:00:00");
+      const travelDate = new Date(formData.date + "T00:00:00");
+
+      if (returnDate < travelDate) {
+        newErrors.returnDate = "Return date must be after travel date";
       }
     }
 
@@ -732,19 +776,27 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
   // COMPLETELY REWRITTEN DATE HANDLING
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedDateString = e.target.value;
-    
+
     if (!selectedDateString) {
       handleInputChange(e);
       return;
     }
 
     // Parse the date using the input value directly (YYYY-MM-DD format)
-    const selectedDate = new Date(selectedDateString + 'T00:00:00'); // Add time to avoid timezone issues
+    const selectedDate = new Date(selectedDateString + "T00:00:00"); // Add time to avoid timezone issues
     const today = new Date();
-    
+
     // Reset both to start of day for comparison
-    const selectedDateStart = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
-    const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const selectedDateStart = new Date(
+      selectedDate.getFullYear(),
+      selectedDate.getMonth(),
+      selectedDate.getDate()
+    );
+    const todayStart = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    );
 
     // Check if date is valid
     if (isNaN(selectedDate.getTime())) {
@@ -777,8 +829,8 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
   const getTodayDate = () => {
     const today = new Date();
     const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
   };
 
@@ -850,14 +902,33 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
 
     // Additional date validation
     if (formData.date) {
-      const selectedDate = new Date(formData.date + 'T00:00:00');
+      const selectedDate = new Date(formData.date + "T00:00:00");
       const today = new Date();
-      
-      const selectedDateStart = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
-      const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+      const selectedDateStart = new Date(
+        selectedDate.getFullYear(),
+        selectedDate.getMonth(),
+        selectedDate.getDate()
+      );
+      const todayStart = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate()
+      );
 
       if (selectedDateStart.getTime() < todayStart.getTime()) {
         toast.error("Please select today or a future date for travel");
+        return;
+      }
+    }
+
+    // Return date validation
+    if (formData.hasReturnDate && formData.returnDate) {
+      const returnDate = new Date(formData.returnDate + "T00:00:00");
+      const travelDate = new Date(formData.date + "T00:00:00");
+
+      if (returnDate < travelDate) {
+        toast.error("Return date must be after travel date");
         return;
       }
     }
@@ -878,7 +949,12 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
 
       const formDataToSend = new FormData();
       Object.entries(formData).forEach(([key, value]) => {
-        formDataToSend.append(key, value);
+        // Convert boolean values to strings
+        if (typeof value === "boolean") {
+          formDataToSend.append(key, value.toString());
+        } else {
+          formDataToSend.append(key, value);
+        }
       });
       formDataToSend.append(
         "phone_with_code",
@@ -919,6 +995,10 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           pickup: "",
           destination: "",
           date: "",
+          time: "",
+          returnDate: "",
+          returnTime: "",
+          hasReturnDate: false,
           passengers: "",
           message: "",
         });
@@ -1139,65 +1219,71 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
             Phone Number <span className="text-red-500">*</span>
           </label>
           <div className="flex space-x-3" ref={dropdownRef}>
-            {/* Country Code Dropdown */}
-            <div className="relative flex-shrink-0 w-32">
+            {/* Updated Country Code Dropdown - matching Contact form style */}
+            <div className="relative w-32">
               <button
                 type="button"
                 onClick={() => setShowCountryDropdown(!showCountryDropdown)}
-                className="flex items-center justify-between w-full px-3 py-3 rounded-xl border border-gray-300 transition-all duration-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 flex items-center justify-between hover:bg-gray-50 h-[52px]"
               >
-                <span className="text-sm font-medium text-gray-700">
+                <span className="text-gray-700 font-medium">
                   {selectedCountry.dialCode}
                 </span>
                 <ChevronDown
-                  className={`h-4 w-4 text-gray-500 transition-transform ${
+                  className={`h-4 w-4 text-gray-400 transition-transform ${
                     showCountryDropdown ? "rotate-180" : ""
                   }`}
                 />
               </button>
 
+              {/* Dropdown Menu - matching Contact form style */}
               {showCountryDropdown && (
-                <div className="absolute top-full left-0 mt-1 w-80 bg-white border border-gray-300 rounded-xl shadow-lg z-10">
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded-xl shadow-lg z-50 max-h-80 overflow-hidden w-80">
                   {/* Search Input */}
-                  <div className="p-2 border-b border-gray-200">
+                  <div className="p-3 border-b border-gray-200">
                     <div className="relative">
                       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                       <input
                         ref={searchInputRef}
                         type="text"
-                        placeholder="Search country..."
+                        placeholder="Search country or code..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2 text-sm border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        autoFocus
                       />
                     </div>
                   </div>
 
                   {/* Country List */}
                   <div className="max-h-60 overflow-y-auto">
-                    {filteredCountries.map((country) => (
-                      <div
-                        key={country.code}
-                        onClick={() => handleCountrySelect(country)}
-                        className={`flex items-center space-x-3 px-4 py-2 cursor-pointer hover:bg-blue-50 ${
-                          selectedCountry.code === country.code
-                            ? "bg-blue-100"
-                            : ""
-                        }`}
-                      >
-                        <span className="text-sm font-medium text-gray-700 w-16">
-                          {country.dialCode}
-                        </span>
-                        <span className="text-sm text-gray-600 flex-1">
-                          {country.name}
-                        </span>
-                        <span className="text-xs text-gray-400 uppercase">
-                          {country.code}
-                        </span>
-                      </div>
-                    ))}
-                    {filteredCountries.length === 0 && (
-                      <div className="px-4 py-3 text-sm text-gray-500 text-center">
+                    {filteredCountries.length > 0 ? (
+                      filteredCountries.map((country) => (
+                        <button
+                          key={`${country.code}-${country.name}`}
+                          type="button"
+                          onClick={() => handleCountrySelect(country)}
+                          className={`w-full px-4 py-3 text-left hover:bg-blue-50 transition-colors flex items-center justify-between border-b border-gray-100 last:border-b-0 ${
+                            selectedCountry.code === country.code
+                              ? "bg-blue-50 text-blue-600"
+                              : "text-gray-700"
+                          }`}
+                        >
+                          <div className="flex items-center space-x-3">
+                            <span className="font-medium text-gray-900">
+                              {country.dialCode}
+                            </span>
+                            <span className="text-gray-600">
+                              {country.name}
+                            </span>
+                          </div>
+                          {selectedCountry.code === country.code && (
+                            <CheckCircle className="h-4 w-4 text-blue-600 flex-shrink-0" />
+                          )}
+                        </button>
+                      ))
+                    ) : (
+                      <div className="px-4 py-3 text-gray-500 text-center">
                         No countries found
                       </div>
                     )}
@@ -1211,7 +1297,6 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
               <input
                 type="tel"
                 name="phone"
-                onFocus={() => setShowCountryDropdown(false)}
                 value={formData.phone}
                 onChange={handlePhoneChange}
                 placeholder="Enter phone number"
@@ -1290,50 +1375,152 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           />
         </div>
 
-        {/* FIXED: Proper grid alignment with consistent styling */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 mb-2">
-              <Calendar className="h-4 w-4 text-purple-600" />
-              <span>Travel Date</span>
-            </label>
-            <input
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={handleDateChange}
-              min={getTodayDate()}
-              className={`w-full px-4 py-3 rounded-xl border transition-all duration-300 ${
-                errors.date
-                  ? "border-red-500 focus:border-red-500"
-                  : "border-gray-300 focus:border-blue-500"
-              } focus:ring-2 focus:ring-blue-200`}
-            />
-            {errors.date && (
-              <p className="text-red-500 text-sm mt-1 text-left">
-                {errors.date}
-              </p>
-            )}
+        {/* Date and Time Section with Return Date and Time */}
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 mb-2">
+                <Calendar className="h-4 w-4 text-purple-600" />
+                <span>Travel Date</span>
+              </label>
+              <input
+                type="date"
+                name="date"
+                value={formData.date}
+                onChange={handleDateChange}
+                min={getTodayDate()}
+                className={`w-full px-4 py-3 rounded-xl border transition-all duration-300 ${
+                  errors.date
+                    ? "border-red-500 focus:border-red-500"
+                    : "border-gray-300 focus:border-blue-500"
+                } focus:ring-2 focus:ring-blue-200`}
+              />
+              {errors.date && (
+                <p className="text-red-500 text-sm mt-1 text-left">
+                  {errors.date}
+                </p>
+              )}
+            </div>
+            <div>
+              <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 mb-2">
+                <Clock className="h-4 w-4 text-purple-600" />
+                <span>Pickup Time</span>
+              </label>
+              <input
+                type="time"
+                name="time"
+                value={formData.time}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"
+              />
+            </div>
           </div>
 
-          <div>
-            <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 mb-2">
-              <Users className="h-4 w-4 text-orange-600" />
-              <span>Passengers</span>
-            </label>
-            <select
-              name="passengers"
-              value={formData.passengers}
-              onChange={handleInputChange}
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"
+          {/* Return Date Checkbox and Fields */}
+          <div className="flex items-center space-x-3">
+            <input
+              type="checkbox"
+              id="hasReturnDate"
+              checked={formData.hasReturnDate}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  hasReturnDate: e.target.checked,
+                  returnDate: e.target.checked ? formData.returnDate : "",
+                  returnTime: e.target.checked ? formData.returnTime : "",
+                });
+              }}
+              className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <label
+              htmlFor="hasReturnDate"
+              className="text-sm font-medium text-gray-700"
             >
-              <option value="">Select</option>
-              <option value="1-15">1-15 Passengers</option>
-              <option value="16-30">16-30 Passengers</option>
-              <option value="31-50">31-50 Passengers</option>
-              <option value="50+">50+ Passengers</option>
-            </select>
+              Return Trip
+            </label>
           </div>
+
+          {formData.hasReturnDate && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 mb-2">
+                  <Calendar className="h-4 w-4 text-purple-600" />
+                  <span>Return Date</span>
+                </label>
+                <input
+                  type="date"
+                  name="returnDate"
+                  value={formData.returnDate}
+                  onChange={(e) => {
+                    const selectedDateString = e.target.value;
+                    if (!selectedDateString) {
+                      handleInputChange(e);
+                      return;
+                    }
+
+                    const returnDate = new Date(selectedDateString + "T00:00:00");
+                    const travelDate = new Date(formData.date + "T00:00:00");
+
+                    if (returnDate < travelDate) {
+                      setErrors((prev) => ({
+                        ...prev,
+                        returnDate: "Return date must be after travel date",
+                      }));
+                    } else {
+                      if (errors.returnDate) {
+                        setErrors((prev) => ({
+                          ...prev,
+                          returnDate: "",
+                        }));
+                      }
+                      handleInputChange(e);
+                    }
+                  }}
+                  min={formData.date || getTodayDate()}
+                  className={`w-full px-4 py-3 rounded-xl border transition-all duration-300 ${
+                    errors.returnDate
+                      ? "border-red-500 focus:border-red-500"
+                      : "border-gray-300 focus:border-blue-500"
+                  } focus:ring-2 focus:ring-blue-200`}
+                />
+                {errors.returnDate && (
+                  <p className="text-red-500 text-sm mt-1 text-left">
+                    {errors.returnDate}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 mb-2">
+                  <Clock className="h-4 w-4 text-purple-600" />
+                  <span>Return Time</span>
+                </label>
+                <input
+                  type="time"
+                  name="returnTime"
+                  value={formData.returnTime}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* MODIFIED: Changed passengers from select to number input */}
+        <div>
+          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700 mb-2">
+            <Users className="h-4 w-4 text-orange-600" />
+            <span>Number of Passengers</span>
+          </label>
+          <input
+            type="number"
+            name="passengers"
+            value={formData.passengers}
+            onChange={handleInputChange}
+            placeholder="e.g., 25"
+            min="1"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"
+          />
         </div>
       </div>
 

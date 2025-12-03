@@ -51,6 +51,13 @@ if (!$recaptcha_data->success) {
     exit;
 }
 
+// Function to convert date to dd/mm/yyyy format
+function convertDateToDMY($date) {
+    if (empty($date)) return '';
+    $dateObj = DateTime::createFromFormat('Y-m-d', $date);
+    return $dateObj ? $dateObj->format('d/m/Y') : $date;
+}
+
 // Determine form type and prepare data
 $form_type = $_POST['form_type'] ?? 'contact_page';
 $to = "info@busrentalbelgium.com";
@@ -64,6 +71,10 @@ if ($form_type === 'contact_page') {
     $service = htmlspecialchars(trim($_POST['service'] ?? ''));
     $passengers = htmlspecialchars(trim($_POST['passengers'] ?? ''));
     $date = htmlspecialchars(trim($_POST['date'] ?? ''));
+    $time = htmlspecialchars(trim($_POST['time'] ?? '')); // Added time field
+    $returnDate = htmlspecialchars(trim($_POST['returnDate'] ?? ''));
+    $returnTime = htmlspecialchars(trim($_POST['returnTime'] ?? '')); // Added return time field
+    $hasReturnDate = filter_var($_POST['hasReturnDate'] ?? 'false', FILTER_VALIDATE_BOOLEAN);
     $message = htmlspecialchars(trim($_POST['message'] ?? ''));
 
     // Validate required fields
@@ -86,6 +97,10 @@ if ($form_type === 'contact_page') {
     } elseif (!empty($phone)) {
         $formatted_phone = $phone;
     }
+
+    // Convert dates to dd/mm/yyyy format
+    $formatted_date = convertDateToDMY($date);
+    $formatted_return_date = convertDateToDMY($returnDate);
 
     $subject = "New Contact Form Submission - Belgium Bus Rental";
     
@@ -114,7 +129,10 @@ if ($form_type === 'contact_page') {
                 <div class='field'><span class='field-label'>Phone:</span> $formatted_phone</div>
                 <div class='field'><span class='field-label'>Service Needed:</span> $service</div>
                 <div class='field'><span class='field-label'>Passengers:</span> $passengers</div>
-                <div class='field'><span class='field-label'>Travel Date:</span> $date</div>
+                <div class='field'><span class='field-label'>Travel Date:</span> $formatted_date</div>
+                <div class='field'><span class='field-label'>Pickup Time:</span> $time</div>
+                " . ($hasReturnDate ? "<div class='field'><span class='field-label'>Return Date:</span> $formatted_return_date</div>" : "") . "
+                " . ($hasReturnDate ? "<div class='field'><span class='field-label'>Return Time:</span> $returnTime</div>" : "") . "
                 <div class='field'><span class='field-label'>Message:</span><br>$message</div>
             </div>
             <div class='footer'>
@@ -139,6 +157,10 @@ if ($form_type === 'contact_page') {
     $pickup = htmlspecialchars(trim($_POST['pickup'] ?? ''));
     $destination = htmlspecialchars(trim($_POST['destination'] ?? ''));
     $date = htmlspecialchars(trim($_POST['date'] ?? ''));
+    $time = htmlspecialchars(trim($_POST['time'] ?? '')); // Added time field
+    $returnDate = htmlspecialchars(trim($_POST['returnDate'] ?? ''));
+    $returnTime = htmlspecialchars(trim($_POST['returnTime'] ?? '')); // Added return time field
+    $hasReturnDate = filter_var($_POST['hasReturnDate'] ?? 'false', FILTER_VALIDATE_BOOLEAN);
     $passengers = htmlspecialchars(trim($_POST['passengers'] ?? ''));
     $message = htmlspecialchars(trim($_POST['message'] ?? ''));
 
@@ -157,6 +179,10 @@ if ($form_type === 'contact_page') {
 
     // Format phone number with country code for quote form
     $formatted_phone = !empty($phone_with_code) ? $phone_with_code : $phone;
+
+    // Convert dates to dd/mm/yyyy format
+    $formatted_date = convertDateToDMY($date);
+    $formatted_return_date = convertDateToDMY($returnDate);
 
     $subject = "New Quote Request - Belgium Bus Rental";
     
@@ -187,13 +213,16 @@ if ($form_type === 'contact_page') {
                 <div class='field'><span class='field-label'>Company/School:</span> $company</div>
                 <div class='field'><span class='field-label'>Pickup Location:</span> $pickup</div>
                 <div class='field'><span class='field-label'>Destination:</span> $destination</div>
-                <div class='field'><span class='field-label'>Travel Date:</span> $date</div>
+                <div class='field'><span class='field-label'>Travel Date:</span> $formatted_date</div>
+                <div class='field'><span class='field-label'>Pickup Time:</span> $time</div>
+                " . ($hasReturnDate ? "<div class='field'><span class='field-label'>Return Date:</span> $formatted_return_date</div>" : "") . "
+                " . ($hasReturnDate ? "<div class='field'><span class='field-label'>Return Time:</span> $returnTime</div>" : "") . "
                 <div class='field'><span class='field-label'>Passengers:</span> $passengers</div>
                 <div class='field'><span class='field-label'>Additional Message:</span><br>$message</div>
             </div>
             <div class='footer'>
                 <p>This email was sent from the quote form on Belgium Bus Rental website.</p>
-                <p>Received at: " . date('Y-m-d H:i:s') . "</p>
+                <p>Received at: " . date('d-m-Y H:i:s') . "</p>
             </div>
         </div>
     </body>
