@@ -46,11 +46,11 @@ export default function Footer() {
           <div className="text-center">
             <h4 className="text-white font-semibold mb-6 text-lg">Services</h4>
             <ul className="space-y-3 text-base">
-              <li><Link href="/corporate-events" className="hover:text-white transition-colors block py-1">Corporate events</Link></li>
-              <li><Link href="/school-trips" className="hover:text-white transition-colors block py-1">School trips</Link></li>
-              <li><Link href="/shuttles" className="hover:text-white transition-colors block py-1">Shuttles</Link></li>
-              <li><Link href="/transfers" className="hover:text-white transition-colors block py-1">Transfers</Link></li>
-              <li><Link href="/school-trips" className="hover:text-white transition-colors block py-1">Home to school</Link></li>
+              <li><Link href="/corporate-events" className="hover:text-white transition-colors inline-block py-1">Corporate events</Link></li>
+              <li><Link href="/school-trips" className="hover:text-white transition-colors inline-block py-1">School trips</Link></li>
+              <li><Link href="/shuttles" className="hover:text-white transition-colors inline-block py-1">Shuttles</Link></li>
+              <li><Link href="/transfers" className="hover:text-white transition-colors inline-block py-1">Transfers</Link></li>
+              <li><Link href="/school-trips" className="hover:text-white transition-colors inline-block py-1">Home to school</Link></li>
             </ul>
           </div>
 
@@ -58,9 +58,9 @@ export default function Footer() {
           <div className="text-center">
             <h4 className="text-white font-semibold mb-6 text-lg">Menu</h4>
             <ul className="space-y-3 text-base">
-              <li><Link href="/fleet" className="hover:text-white transition-colors block py-1">Fleet</Link></li>
-              <li><Link href="/about-us" className="hover:text-white transition-colors block py-1">About Us</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors block py-1">Contact</Link></li>
+              <li><Link href="/fleet" className="hover:text-white transition-colors inline-block py-1">Fleet</Link></li>
+              <li><Link href="/about-us" className="hover:text-white transition-colors inline-block py-1">About Us</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors inline-block py-1">Contact</Link></li>
               {/* <li><Link href="#" className="hover:text-white transition-colors block py-1">Careers</Link></li> */}
             </ul>
           </div>
