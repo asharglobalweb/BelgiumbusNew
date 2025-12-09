@@ -99,7 +99,7 @@ export default function Header() {
               src="/images/logo2.png"
               fill
               className="object-contain"
-              alt="Australia Bus Rental - Premium Coach Hire Services"
+              alt="Belgium Bus Rental - Premium Coach Hire Services"
               priority
             />
           </div>
