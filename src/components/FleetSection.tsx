@@ -396,7 +396,7 @@ export default function FleetSection() {
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Choose from our diverse range of well-maintained vehicles, perfect
-            for any occasion across Australia
+            for any occasion across Belgium
           </p>
         </div>
 
