@@ -15,6 +15,7 @@ import {
   Star,
   CheckCircle,
 } from "lucide-react";
+import Image from "next/image"; // Added import
 
 export default function FleetSection() {
   const [activeCategory, setActiveCategory] = useState<
@@ -395,7 +396,7 @@ export default function FleetSection() {
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Choose from our diverse range of well-maintained vehicles, perfect
-            for any occasion across Belgium
+            for any occasion across Australia
           </p>
         </div>
 
@@ -481,13 +482,22 @@ export default function FleetSection() {
                 key={vehicle.id}
                 className="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group flex flex-col h-full"
               >
-                {/* Vehicle Image with actual image source */}
+                {/* Vehicle Image with Next.js Image optimization */}
                 <div className="relative h-72 overflow-hidden flex-shrink-0">
                   <div className="w-full h-full bg-white flex items-center justify-center">
-                    <img
+                    <Image
                       src={vehicle.image}
                       alt={vehicle.name}
+                      width={500}
+                      height={300}
                       className="h-5/6 w-5/6 object-contain group-hover:scale-105 transition-transform duration-500"
+                      style={{ 
+                        width: 'auto',
+                        height: 'auto',
+                        maxWidth: '80%',
+                        maxHeight: '80%'
+                      }}
+                      priority={vehicle.id <= 3} // Only prioritize first few images
                     />
                   </div>
                   {/* Badges Container */}
