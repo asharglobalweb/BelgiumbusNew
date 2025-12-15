@@ -21,22 +21,22 @@ import {
 import Image from "next/image";
 
 const service = {
-  title: 'Safe and Exciting',
-  span: 'School Trips',
-  subTitle: 'Make every school trip memorable with Belgium Buses — safe, comfortable, and expertly managed transport for students and teachers across Belgium.',
+  title: 'Educational & Safe',
+  span: 'School Transport',
+  subTitle: 'Make every educational journey secure and memorable with Belgium Buses — reliable, comfortable, and expertly managed transport for students and teachers across Belgium.',
   image: '/images/scht4.png'
 }
 
 const tripDetail = {
-  h2: 'About Our School Trip Service',
-  title: 'Belgium Buses provides reliable and enjoyable school trip transport across Belgium. From museums to theme parks, our modern coaches, experienced drivers, and advanced safety features ensure every journey is smooth, secure, and fun for everyone.',
+  h2: 'Dedicated School Trip & Educational Transport',
+  title: 'Belgium Buses provides safe, reliable, and enjoyable school trip transport across Belgium. From museums to historical sites and theme parks, our modern coaches, experienced drivers, and advanced safety protocols ensure every educational journey is smooth, secure, and engaging for everyone.',
   features: [
-    'Professional, background checked drivers',
-    'Custom itineraries to match school plans',
-    'Educational and recreational trip options',
-    'Air conditioned coaches with seat belts',
-    'Group discounts and transparent pricing',
-    'Live tracking and safety updates for peace of mind'
+    'Professional, background-checked drivers with child safety training',
+    'Custom itineraries tailored to your school’s educational plans',
+    'Diverse educational and recreational destination options',
+    'Air-conditioned coaches with full seat belts and safety features',
+    'Special group discounts and transparent, all-inclusive pricing',
+    'Live GPS tracking and safety updates for parents and teachers'
   ],
   images: [
     { image: "/images/scht1.png" },
@@ -49,42 +49,42 @@ const schoolFeatures = [
   {
     icon: Shield,
     title: "Enhanced Safety",
-    description: "Comprehensive safety protocols, seat belts, and professional drivers with child safety training",
+    description: "Comprehensive safety protocols, full seat belts, and drivers trained in child safety and first aid",
     color: "text-green-600",
     bgColor: "bg-green-100"
   },
   {
     icon: BookOpen,
     title: "Educational Focus",
-    description: "Perfect for museum visits, historical sites, and educational landmarks across Belgium",
+    description: "Ideal for museum visits, historical landmarks, science centers, and educational tours across Belgium",
     color: "text-blue-600",
     bgColor: "bg-blue-100"
   },
   {
     icon: Users,
     title: "Group Friendly",
-    description: "Spacious coaches designed for student groups with ample storage for bags and equipment",
+    description: "Spacious coaches designed specifically for student groups, with ample storage for bags and equipment",
     color: "text-purple-600",
     bgColor: "bg-purple-100"
   },
   {
     icon: HeartHandshake,
     title: "Teacher Support",
-    description: "Dedicated support for teachers with itinerary planning and on-trip assistance",
+    description: "Dedicated support for teachers, including itinerary planning, risk assessments, and on-trip assistance",
     color: "text-orange-600",
     bgColor: "bg-orange-100"
   }
 ];
 
 const destinations = [
-  "Brussels Museums & EU Parliament",
-  "Antwerp Zoo & Historic Center",
-  "Bruges Canals & Medieval Town",
-  "Waterloo Battlefield",
-  "Pairi Daiza Zoo",
-  "Plopsaland Theme Park",
-  "Ardennes Nature Trips",
-  "Coastal Educational Centers"
+  "Brussels Museums & EU Parliament Tours",
+  "Antwerp Zoo & Historic City Center",
+  "Bruges Canals & Medieval Town Tours",
+  "Waterloo Battlefield Educational Visits",
+  "Pairi Daiza Zoo & Botanical Gardens",
+  "Plopsaland Theme Park Excursions",
+  "Ardennes Nature & Outdoor Education Trips",
+  "Belgian Coast & Maritime Education Centers"
 ];
 
 export default function SchoolTrips() {
@@ -95,7 +95,7 @@ export default function SchoolTrips() {
       <Breadcrumbs
         crumbs={[
           { name: "Home", href: "/" },
-          { name: "School Trips" },
+          { name: "School Trips & Transport" },
         ]}
       />
       
@@ -113,7 +113,7 @@ export default function SchoolTrips() {
               <div className="space-y-6">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-600 text-sm font-semibold shadow-sm animate-fade-in">
                   <GraduationCap className="h-4 w-4 mr-2" />
-                  Educational Travel Experts
+                  Trusted Educational Travel Partner
                 </div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight animate-slide-up">
                   {service.title}{' '}
@@ -138,17 +138,13 @@ export default function SchoolTrips() {
                 </div>
                 <div className="text-center p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm">
                   <div className="text-2xl font-bold text-purple-600">50+</div>
-                  <div className="text-sm text-gray-600">Destinations</div>
+                  <div className="text-sm text-gray-600">Educational Destinations</div>
                 </div>
               </div>
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up" style={{animationDelay: '0.6s'}}>
                 <QuoteModal />
-                {/* <button className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group">
-                  <BookOpen className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
-                  Plan Your Trip */}
-                {/* </button> */}
               </div>
             </div>
 
@@ -159,7 +155,7 @@ export default function SchoolTrips() {
                   src={service.image}
                   width={600}
                   height={500}
-                  alt="School trip with Belgium Buses - Safe and exciting educational journeys"
+                  alt="School trip transport in Belgium - Safe and educational journeys for students"
                   className="w-full h-auto"
                   priority
                 />
@@ -204,13 +200,13 @@ export default function SchoolTrips() {
           <div className="text-center mb-16 animate-slide-up">
             <span className="inline-flex items-center bg-white/80 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold shadow-sm mb-6">
               <Star className="h-4 w-4 mr-2" />
-              Why Choose Us for School Trips
+              Why Choose Our School Transport Services
             </span>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Designed for <span className="text-blue-600">Educational Excellence</span>
+              Designed for <span className="text-blue-600">Safe Educational Travel</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We understand the unique needs of educational travel and provide tailored solutions for schools across Belgium
+              We understand the unique requirements of educational travel and provide tailored, safe transport solutions for schools and colleges across Belgium.
             </p>
           </div>
 
@@ -244,7 +240,7 @@ export default function SchoolTrips() {
               <div className="space-y-6">
                 <span className="inline-flex items-center bg-white/80 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
                   <GraduationCap className="h-4 w-4 mr-2" />
-                  Comprehensive School Trip Service
+                  Comprehensive School & College Transport
                 </span>
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                   {tripDetail.h2}
@@ -270,7 +266,7 @@ export default function SchoolTrips() {
 
               {/* Popular Destinations */}
               <div className="pt-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Popular School Trip Destinations</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Popular Educational Destinations</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {destinations.map((destination, index) => (
                     <div key={index} className="flex items-center space-x-2 text-gray-600">
@@ -294,7 +290,7 @@ export default function SchoolTrips() {
                   >
                     <Image
                       src={img.image}
-                      alt={`School trip experience ${index + 1}`}
+                      alt={`School trip experience ${index + 1} - Educational travel in Belgium`}
                       width={600}
                       height={400}
                       className="w-full h-auto"
@@ -327,13 +323,13 @@ export default function SchoolTrips() {
           <div className="space-y-6 animate-slide-up">
             <div className="inline-flex items-center bg-white/80 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
               <HeartHandshake className="h-4 w-4 mr-2" />
-              Ready to Plan Your School Trip?
+              Ready to Plan Your Next School Trip?
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-              Let&apos;s Create <span className="text-blue-600">Memorable Learning Experiences</span>
+              Let&apos;s Create <span className="text-blue-600">Memorable Learning Adventures</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Get a personalized quote for your school&apos;s next educational adventure across Belgium
+              Get a personalised, no-obligation quote for your school&apos;s next educational journey across Belgium.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
               <QuoteModal />

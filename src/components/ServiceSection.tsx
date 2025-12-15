@@ -18,7 +18,7 @@ const services = [
     key: "corporate",
     title: "Corporate Events",
     description:
-      "Make your corporate travel effortless with our premium coach hire services across Belgium. Whether it's for conferences, meetings, or company events, we offer dependable and comfortable transport for your team.",
+      "Ensure seamless business travel in Belgium with premium coach hire for corporate events, conferences, and team transport. We provide reliable, comfortable transfers across Brussels, Antwerp, and Ghent.",
     image: "/images/corporate21.png",
     icon: Building2,
     features: [
@@ -32,7 +32,7 @@ const services = [
     key: "school",
     title: "School Trips",
     description:
-      "Turn every educational journey into a safe and enjoyable experience with our trusted school coach hire service. From museum visits to history trips, we make group travel simple and reliable.",
+      "Plan safe, memorable school trips and educational outings in Belgium with our trusted coach hire. From museum visits to field trips, we provide reliable, comfortable transport for students and teachers.",
     image: "/images/school21.png",
     icon: GraduationCap,
     features: [
@@ -46,7 +46,7 @@ const services = [
     key: "transfers",
     title: "Transfers",
     description:
-      "Enjoy seamless door-to-door transport with our professional transfer service anywhere in Belgium. From airport pickups to city transfers, we provide smooth, comfortable travel.",
+      "Reliable airport transfers to/from Brussels Airport & Charleroi. We offer professional, comfortable private transfers and city transport across Belgium for a seamless journey.",
     image: "/images/transfer21.png",
     icon: Plane,
     features: [
@@ -60,7 +60,7 @@ const services = [
     key: "shuttle",
     title: "Shuttle Services",
     description:
-      "Experience seamless travel with Belgium Buses — efficient, comfortable, and dependable shuttle solutions across Belgium for groups of all sizes. Perfect for scheduled routes, airport transfers, and group transportation.",
+      "Dependable shuttle services across Belgium for groups of all sizes. Choose Belgium Buses for efficient airport shuttles, scheduled routes, and comfortable group transportation solutions.",
     image: "/images/shuttle21.png",
     icon: Users,
     features: [
@@ -74,7 +74,7 @@ const services = [
     key: "home",
     title: "Home to School",
     description:
-      "Simplify your family's routine with our safe and reliable home to school transport service. Our professional drivers ensure punctuality and peace of mind for parents.",
+      "Reliable home to school transport service in Belgium. Our professional drivers ensure a safe, punctual school run, giving parents daily peace of mind.",
     image: "/images/home21.png",
     icon: Home,
     features: [
@@ -108,14 +108,13 @@ export default function ServicesSection() {
             Our Services
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 animate-slide-up">
-            Coach Hire Services in Belgium
+            Coach and Bus Hire Services Belgium
           </h2>
           <p
             className="text-xl text-gray-600 max-w-2xl mx-auto animate-slide-up"
             style={{ animationDelay: "0.2s" }}
           >
-            Discover reliable and affordable coach hire, minibus rental, and
-            group transport services across Belgium.
+           Reliable coach hire, minibus rental, and private bus transfers across Belgium for groups, tours, and events.	
           </p>
         </div>
 

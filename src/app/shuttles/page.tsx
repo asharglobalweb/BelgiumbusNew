@@ -23,22 +23,22 @@ import {
 import Image from "next/image";
 
 const shuttle = {
-  title: 'Reliable',
-  span: 'Shuttle Services',
-  subTitle: 'Experience seamless travel with Belgium Buses — efficient, comfortable, and dependable shuttle solutions across Belgium for groups of all sizes.',
+  title: 'Efficient Scheduled',
+  span: 'Shuttle Transport',
+  subTitle: 'Experience seamless, fixed-schedule travel with Belgium Buses — reliable, comfortable, and cost-effective shuttle solutions for groups across Belgium.',
   image: '/images/shuttle3.png',
 };
 
 const shuttleDetail = {
-  h2: 'About Our Shuttle Service',
-  title: 'Belgium Buses provides smooth and scheduled shuttle transport across Belgium. From airports and hotels to event venues, our modern coaches and professional drivers ensure every journey is safe, comfortable, and always on time — ideal for corporate groups, private events, and organized travel logistics.',
+  h2: 'Reliable Scheduled Shuttle & Group Transport',
+  title: 'Belgium Buses provides smooth, scheduled shuttle transport across Belgium. Serving airports, hotels, event venues, and business hubs, our modern coaches and professional drivers ensure every group journey is safe, comfortable, and punctual — perfect for corporate commutes, event logistics, and organised group travel.',
   features: [
-    'Scheduled and on demand shuttle options',
-    'Modern air conditioned coaches',
-    'Professional uniformed drivers',
-    'Real time tracking and updates',
-    'Custom routes for airports, hotels, and events',
-    'Competitive group pricing with no hidden fees'
+    'Fixed-schedule and on-demand shuttle options',
+    'Modern, air-conditioned coaches with ample space',
+    'Professional, uniformed drivers trained in group management',
+    'Real-time tracking and live service updates',
+    'Custom routes for airports, hotels, conferences, and events',
+    'Competitive group pricing with transparent, all-inclusive rates'
   ],
   images: [
     { image: '/images/shuttle1.png' },
@@ -51,42 +51,42 @@ const shuttleFeatures = [
   {
     icon: Bus,
     title: "Scheduled Services",
-    description: "Regular shuttle routes with fixed schedules for airports, hotels, and major destinations",
+    description: "Regular, reliable shuttle routes with fixed timetables for airports, hotels, and major destinations",
     color: "text-blue-600",
     bgColor: "bg-blue-100"
   },
   {
     icon: Wifi,
     title: "Travel Comfort",
-    description: "Onboard WiFi, charging ports, and comfortable seating for relaxed journeys",
+    description: "Onboard WiFi, charging ports, and comfortable seating for relaxed, connected group journeys",
     color: "text-purple-600",
     bgColor: "bg-purple-100"
   },
   {
     icon: Target,
     title: "Punctual & Reliable",
-    description: "Guaranteed on-time departures and arrivals for all scheduled services",
+    description: "Guaranteed on-time departures and arrivals for all scheduled and pre-booked shuttle services",
     color: "text-green-600",
     bgColor: "bg-green-100"
   },
   {
     icon: Route,
     title: "Flexible Routes",
-    description: "Customizable shuttle routes to meet your specific group transportation needs",
+    description: "Customisable shuttle routes and schedules to meet your specific group transportation needs",
     color: "text-orange-600",
     bgColor: "bg-orange-100"
   }
 ];
 
 const shuttleDestinations = [
-  "Brussels Airport (BRU) Transfers",
-  "Charleroi Airport (CRL) Shuttles",
-  "Antwerp Central Station",
-  "Ghent City Center",
-  "Bruges Tourist District",
+  "Brussels Airport (BRU) Shuttle Services",
+  "Charleroi Airport (CRL) Scheduled Transfers",
+  "Antwerp Central Station Shuttle",
+  "Ghent City Center & University Routes",
+  "Bruges Historic District Shuttles",
   "Hotel & Conference Center Transfers",
-  "Event Venue Shuttles",
-  "Cross-border Shuttle Services"
+  "Major Event & Festival Venue Shuttles",
+  "Cross-border Shuttle Services to Neighbouring Countries"
 ];
 
 export default function Shuttles() {
@@ -147,10 +147,6 @@ export default function Shuttles() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up" style={{animationDelay: '0.6s'}}>
                 <QuoteModal />
-                {/* <button className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group">
-                  <Calendar className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
-                  Schedule Shuttle
-                </button> */}
               </div>
             </div>
 
@@ -161,7 +157,7 @@ export default function Shuttles() {
                   src={shuttle.image}
                   width={600}
                   height={500}
-                  alt="Shuttle services with Belgium Buses - Efficient group transportation"
+                  alt="Scheduled shuttle service in Belgium - Efficient group transportation for events and travel"
                   className="w-full h-auto"
                   priority
                 />
@@ -206,13 +202,13 @@ export default function Shuttles() {
           <div className="text-center mb-16 animate-slide-up">
             <span className="inline-flex items-center bg-white/80 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold shadow-sm mb-6">
               <Star className="h-4 w-4 mr-2" />
-              Why Choose Our Shuttle Services
+              Why Choose Our Scheduled Shuttle Services
             </span>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Designed for <span className="text-blue-600">Group Travel</span>
+              Engineered for <span className="text-blue-600">Efficient Group Travel</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Efficient transportation solutions for groups of all sizes, ensuring comfort and reliability throughout Belgium
+              Reliable scheduled transportation solutions for groups of all sizes, ensuring comfort, punctuality, and seamless logistics throughout Belgium.
             </p>
           </div>
 
@@ -246,7 +242,7 @@ export default function Shuttles() {
               <div className="space-y-6">
                 <span className="inline-flex items-center bg-white/80 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
                   <Bus className="h-4 w-4 mr-2" />
-                  Comprehensive Shuttle Transport
+                  Comprehensive Shuttle & Group Transport
                 </span>
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                   {shuttleDetail.h2}
@@ -272,7 +268,7 @@ export default function Shuttles() {
 
               {/* Popular Destinations */}
               <div className="pt-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Popular Shuttle Routes</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Popular Scheduled Shuttle Routes</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {shuttleDestinations.map((destination, index) => (
                     <div key={index} className="flex items-center space-x-2 text-gray-600">
@@ -296,7 +292,7 @@ export default function Shuttles() {
                   >
                     <Image
                       src={img.image}
-                      alt={`Shuttle service ${index + 1}`}
+                      alt={`Scheduled shuttle service ${index + 1} - Group transport in Belgium`}
                       width={600}
                       height={400}
                       className="w-full h-auto"
@@ -329,13 +325,13 @@ export default function Shuttles() {
           <div className="space-y-6 animate-slide-up">
             <div className="inline-flex items-center bg-white/80 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
               <Route className="h-4 w-4 mr-2" />
-              Ready to Book Your Shuttle?
+              Need a Reliable Scheduled Shuttle?
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-              Let&apos;s Transport Your <span className="text-blue-600">Group Safely</span>
+              Let&apos;s Transport Your <span className="text-blue-600">Group Smoothly & Safely</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Get a personalized quote for your shuttle transportation needs across Belgium
+              Get a personalised quote for your scheduled shuttle and group transportation needs across Belgium.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
               <QuoteModal />
@@ -361,7 +357,7 @@ export default function Shuttles() {
             </div>
             <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm">
               <Star className="h-8 w-8 text-yellow-600 mx-auto mb-2" />
-              <div className="font-semibold text-gray-900">4.8/5 Rated</div>
+              <div className="font-semibold text-gray-900">4.9/5 Rated</div>
             </div>
           </div>
         </div>

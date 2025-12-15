@@ -392,11 +392,10 @@ export default function FleetSection() {
             Our Modern Fleet
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Discover Our Vehicle Collection
+            Our Coach & Minibus Fleet in Belgium
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Choose from our diverse range of well-maintained vehicles, perfect
-            for any occasion across Belgium
+            Explore our diverse range of cars, coaches and minibuses, perfectly suited for any group size and destination in Belgium.
           </p>
         </div>
 

@@ -627,15 +627,14 @@ export default function Contact() {
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight animate-slide-up">
               Ready to{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                Book Your Ride?
+                Ready to Book Your Coach or Minibus?
               </span>
             </h1>
             <p
               className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed animate-slide-up"
               style={{ animationDelay: "0.2s" }}
             >
-              Let&apos;s discuss your transportation needs. Our team is ready to
-              provide the perfect solution for your journey across Belgium.
+             Let&apos;s tailor your group transport across Belgium. Get a personalised quote for reliable coach hire or minibus rental today.
             </p>
 
             {/* Quick Stats */}

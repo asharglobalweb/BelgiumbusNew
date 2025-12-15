@@ -12,8 +12,8 @@ const jostSans = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Belgium Bus Rental",
-  description: "Belgium Bus Rental",
+  title: "Belgium Bus Rental and Coach Hire | Modern Fleet, Nationwide Coverage",
+  description: "Need a reliable bus or coach in Belgium? Get affordable, professional rental for corporate events, school trips, airport transfers, and private tours. Modern vehicles & experienced drivers. Get a free, instant quote!",
 };
 
 export default function RootLayout({

@@ -17,23 +17,23 @@ export default function HowItWorks() {
     {
       Icon: MapPin,
       title: "Choose Your Route",
-      desc: "Tell us your pickup and destination locations anywhere in Belgium. We serve 50+ cities across the country.",
+      desc: "Tell us your start and end point in Belgium. Our nationwide network covers 50+ cities for seamless transport.",
       color: "text-blue-600",
       bgColor: "bg-blue-100",
       details: ["Any location in Belgium", "50+ cities covered", "Flexible pickup points"]
     },
     {
       Icon: Calendar,
-      title: "Select Date & Time",
-      desc: "Pick your travel schedule - we're flexible for one-way trips, return journeys, or multi-day bookings.",
+      title: "Choose Your Dates & Times",
+      desc: "Select your schedule for flexible coach hire. Ideal for one-way trips, return journeys, or multi-day rentals across Belgium.",
       color: "text-green-600",
       bgColor: "bg-green-100",
       details: ["One-way or return", "24/7 availability", "Flexible scheduling"]
     },
     {
       Icon: Bus,
-      title: "Get Your Coach",
-      desc: "We assign a modern, comfortable coach with a professional driver. Just sit back and enjoy the journey.",
+      title: "All Set for Your Trip",
+      desc: "Your modern, comfortable coach and professional driver are confirmed. Just sit back and enjoy a seamless journey across Belgium.",
       color: "text-purple-600",
       bgColor: "bg-purple-100",
       details: ["Modern fleet", "Professional drivers", "Luxury amenities"]

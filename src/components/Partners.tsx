@@ -8,16 +8,16 @@ import Image from "next/image";
 import { Building2 } from "lucide-react";
 
 const partners = [
-  { name: "Alpadia Language Schools", logo: "/images/partner/uefa.png" },
+  { name: "UEFA", logo: "/images/partner/uefa.png" },
   // { name: "Apple", logo: "/images/partner/apple-logo-banner.avif" },
   // { name: "Nintendo", logo: "/images/partner/nintendo-logo-banner.avif" },
-  { name: "Roland Garros", logo: "/images/partner/un.png" },
-  { name: "Fnac", logo: "/images/partner/ab.png" },
-  { name: "Sorbonne Université", logo: "/images/partner/ef.png" },
-  { name: "Accor Hotels", logo: "/images/partner/sh.png" },
-  { name: "TF1", logo: "/images/partner/ew.png" },
-  { name: "Orange", logo: "/images/partner/rn.png" },
-  { name: "Alliance Française", logo: "/images/partner/mi.png" },
+  { name: "Unilever", logo: "/images/partner/un.png" },
+  { name: "Airbus", logo: "/images/partner/ab.png" },
+  { name: "Education First", logo: "/images/partner/ef.png" },
+  { name: "Shell", logo: "/images/partner/sh.png" },
+  { name: "Eurowings", logo: "/images/partner/ew.png" },
+  { name: "Renault", logo: "/images/partner/rn.png" },
+  { name: "Marriott", logo: "/images/partner/mi.png" },
 ];
 
 export default function PartnersSwiper() {

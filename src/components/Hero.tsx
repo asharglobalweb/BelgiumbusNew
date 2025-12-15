@@ -58,11 +58,10 @@ export default function Hero() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight animate-slide-up">
                 Premium Coach
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"> Hire </span>
-                in Belgium
+                Across Belgium
               </h1>
               <p className="text-xl text-gray-600 max-w-2xl leading-relaxed animate-slide-up" style={{animationDelay: '0.2s'}}>
-                Discover reliable and affordable coach and minibus hire in Belgium with Belgium Bus Rentals.
-                Ideal for corporate events, school trips, airport transfers, private tours, and group travel across the country.
+                Discover reliable and affordable coach hire and minibus rental in Belgium for all your group travel needs. Belgium Bus Rentals provides professional charter bus services with driver for corporate events and business travel in Brussels, memorable school trips and class outings, seamless airport transfers to and from major Belgian airports, and customized private tours to destinations like Antwerp, Bruges, and Ghent. We offer group transportation solutions across the country.
               </p>
             </div>
 

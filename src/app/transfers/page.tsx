@@ -23,22 +23,22 @@ import {
 import Image from "next/image";
 
 const transfer = {
-  title: 'Door-to-Door',
-  span: 'Transfers',
-  subTitle: 'Reliable transfers across Belgium by Belgium Buses — premium comfort, professional drivers, and on-time service wherever you go.',
+  title: 'Premium',
+  span: 'Private Transfers',
+  subTitle: 'Reliable door-to-door transfer services across Belgium. Enjoy comfortable, punctual, and professional private transport with Belgium Buses.',
   image: '/images/transfer1.png',
 };
 
 const transferDetail = {
-  h2: 'About Our Transfer Service',
-  title: 'Travel in comfort and style with Belgium Buses. Our door-to-door transfers cover airports, hotels, and corporate destinations across Belgium — punctual, professional, and stress-free.',
+  h2: 'Professional Private Transfer Services',
+  title: 'Travel in comfort and style with Belgium Buses. Our premium private transfers serve airports, hotels, corporate hubs, and destinations across Belgium — ensuring a punctual, professional, and stress-free door-to-door experience.',
   features: [
-    'Meet & greet service included',
-    'Real-time flight and traffic tracking',
-    'Complimentary Wi-Fi and refreshments',
-    'Fixed, transparent pricing — no surprises',
-    'Professional uniformed drivers',
-    'Luxury vehicles for executive transfers'
+    'Personal meet & greet service included',
+    'Real-time flight and traffic monitoring',
+    'Complimentary Wi-Fi and refreshments onboard',
+    'Fixed, transparent pricing with no hidden costs',
+    'Professional uniformed drivers with local expertise',
+    'Luxury vehicle options for executive transfers'
   ],
   images: [
     { image: "/images/transfer2.png" },
@@ -51,42 +51,42 @@ const transferFeatures = [
   {
     icon: DoorOpen,
     title: "Door-to-Door Service",
-    description: "Direct transfers from your starting point to destination with no intermediate stops",
+    description: "Direct, private transfers from your exact starting point to destination across Belgium",
     color: "text-blue-600",
     bgColor: "bg-blue-100"
   },
   {
     icon: Wifi,
     title: "Premium Comfort",
-    description: "Complimentary WiFi, refreshments, and luxury seating for a relaxed journey",
+    description: "Complimentary WiFi, refreshments, and luxury seating for a relaxed, productive journey",
     color: "text-purple-600",
     bgColor: "bg-purple-100"
   },
   {
     icon: Target,
     title: "Punctual & Reliable",
-    description: "Guaranteed on-time arrivals for flights, meetings, and important events",
+    description: "Guaranteed on-time arrivals for flights, business meetings, and important events",
     color: "text-green-600",
     bgColor: "bg-green-100"
   },
   {
     icon: Users,
     title: "Meet & Greet",
-    description: "Professional drivers with personalized meet and greet service included",
+    description: "Professional drivers provide personalised meet and greet service for all transfers",
     color: "text-orange-600",
     bgColor: "bg-orange-100"
   }
 ];
 
 const transferDestinations = [
-  "Brussels Airport (BRU) Transfers",
-  "Charleroi Airport (CRL) Transfers",
-  "Antwerp Central Station",
-  "Ghent City Center",
-  "Bruges Historic District",
-  "Hotel & Resort Transfers",
-  "Corporate Office Transfers",
-  "Event Venue Transfers"
+  "Brussels Airport (BRU) Private Transfers",
+  "Charleroi Airport (CRL) Transfer Services",
+  "Antwerp Central Station & City Centre",
+  "Ghent Historic Center Transfers",
+  "Bruges Medieval District Drop-offs",
+  "Hotel & Luxury Resort Transfers",
+  "Corporate Office & Business Park Transfers",
+  "Event & Conference Venue Transfers"
 ];
 
 export default function Transfer() {
@@ -97,7 +97,7 @@ export default function Transfer() {
       <Breadcrumbs
         crumbs={[
           { name: "Home", href: "/" },
-          { name: "Transfers" },
+          { name: "Private Transfers" },
         ]}
       />
       
@@ -147,10 +147,6 @@ export default function Transfer() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up" style={{animationDelay: '0.6s'}}>
                 <QuoteModal />
-                {/* <button className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group">
-                  <Calendar className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
-                  Book Transfer
-                </button> */}
               </div>
             </div>
 
@@ -161,7 +157,7 @@ export default function Transfer() {
                   src={transfer.image}
                   width={600}
                   height={500}
-                  alt="Door-to-door transfers with Belgium Buses - Premium personal transport"
+                  alt="Private door-to-door transfer service in Belgium - Comfortable personal transport"
                   className="w-full h-auto"
                   priority
                 />
@@ -206,13 +202,13 @@ export default function Transfer() {
           <div className="text-center mb-16 animate-slide-up">
             <span className="inline-flex items-center bg-white/80 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold shadow-sm mb-6">
               <Star className="h-4 w-4 mr-2" />
-              Why Choose Our Transfer Services
+              Why Choose Our Private Transfer Services
             </span>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Designed for <span className="text-blue-600">Personal Comfort</span>
+              Designed for <span className="text-blue-600">Personal Comfort & Convenience</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Premium door-to-door transportation solutions ensuring comfort, reliability, and personalized service throughout Belgium
+              Premium door-to-door private transportation ensuring comfort, reliability, and personalised service throughout Belgium&apos;s key destinations.
             </p>
           </div>
 
@@ -246,7 +242,7 @@ export default function Transfer() {
               <div className="space-y-6">
                 <span className="inline-flex items-center bg-white/80 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
                   <Car className="h-4 w-4 mr-2" />
-                  Premium Door-to-Door Transport
+                  Premium Door-to-Door Private Transport
                 </span>
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                   {transferDetail.h2}
@@ -296,7 +292,7 @@ export default function Transfer() {
                   >
                     <Image
                       src={img.image}
-                      alt={`Transfer service ${index + 1}`}
+                      alt={`Private transfer service ${index + 1} in Belgium - Comfortable and reliable`}
                       width={600}
                       height={400}
                       className="w-full h-auto"
@@ -329,13 +325,13 @@ export default function Transfer() {
           <div className="space-y-6 animate-slide-up">
             <div className="inline-flex items-center bg-white/80 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
               <DoorOpen className="h-4 w-4 mr-2" />
-              Ready to Book Your Transfer?
+              Need a Reliable Private Transfer?
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-              Let&apos;s Take You <span className="text-blue-600">Where You Need</span>
+              Let&apos;s Take You <span className="text-blue-600">Where You Need to Be</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Get a personalized quote for your door-to-door transfer needs across Belgium
+              Get a personalised quote for your private door-to-door transfer needs across Belgium
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
               <QuoteModal />

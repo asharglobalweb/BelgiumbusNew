@@ -31,8 +31,8 @@ export default function WhyChooseUs() {
     {
       Icon: DollarSign,
       title: "Best Price Guarantee",
-      shortDesc: "Get the best value across Belgium with our price match guarantee.",
-      content: "We're committed to providing the most competitive rates for coach hire in Belgium. If you find a lower quote for the same service from another licensed operator, we'll match it and still deliver our premium service. Our direct operations without middlemen allow us to offer better value while maintaining the highest standards of comfort and safety.",
+      shortDesc: "We guarantee the best price for your minibus or coach hire in Belgium.",
+      content: "We guarantee the most competitive coach hire rates in Belgium. Our best price guarantee ensures that if you receive a lower written quote from a licensed operator, we will match it. We provide transparent pricing with no hidden fees, offering better value through direct operations—ensuring you get affordable bus rental without compromising on our premium service, comfort, and safety standards.",
       color: "text-green-600",
       bgColor: "bg-green-100",
       borderColor: "border-green-200"
@@ -40,8 +40,8 @@ export default function WhyChooseUs() {
     {
       Icon: User,
       title: "Experienced Drivers",
-      shortDesc: "Fully licensed professional drivers for safe and enjoyable journeys.",
-      content: "All our drivers undergo rigorous training and hold full Belgian commercial driving licenses. With an average of 10+ years experience, they know Belgium's roads intimately. They're trained in defensive driving, first aid, and customer service to ensure your journey is not just safe but genuinely pleasant from start to finish.",
+      shortDesc: "Travel safely with our fully licensed, safety-trained coach drivers in Belgium.",
+      content: "Your safety is our priority. All drivers are fully licensed professional coach drivers with deep local knowledge of Belgian roads. They undergo continuous training in defensive driving and safety protocols, and are committed to providing a secure, comfortable, and pleasant journey for every passenger.",
       color: "text-blue-600",
       bgColor: "bg-blue-100",
       borderColor: "border-blue-200"
@@ -49,8 +49,8 @@ export default function WhyChooseUs() {
     {
       Icon: Clock,
       title: "24/7 Availability",
-      shortDesc: "Round-the-clock service for all your travel needs across Belgium.",
-      content: "Whether you need an early morning airport transfer, late-night event transportation, or weekend group travel, we're always available. Our operations team works around the clock to coordinate journeys across all 50+ cities we serve. Last-minute bookings? Emergency changes? We've got you covered anytime, day or night.",
+      shortDesc: "We operate 24/7 for airport transfers and group transport in Belgium.",
+      content: "Need urgent transport or a last-minute booking? Our 24/7 service covers all of Belgium. We coordinate early airport transfers, late-night event travel, and weekend group trips across 50+ cities. Our team is always ready to assist with schedule changes or immediate requests, ensuring reliable service day or night.",
       color: "text-purple-600",
       bgColor: "bg-purple-100",
       borderColor: "border-purple-200"
@@ -58,8 +58,8 @@ export default function WhyChooseUs() {
     {
       Icon: Headset,
       title: "Dedicated Support",
-      shortDesc: "24/7 customer service for bookings, updates, and assistance.",
-      content: "Our multilingual support team is available 24/7 to handle everything from initial quotes to real-time journey updates. Need to make changes to your booking? Have questions about your route? Require special accommodations? Our dedicated support specialists are just a call or message away, ensuring seamless communication throughout your travel experience.",
+      shortDesc: "Personalised, round-the-clock support for your journey, always available.",
+      content: "Enjoy complete peace of mind with our dedicated 24/7 customer support. Our multilingual team provides personalised booking assistance, handles real-time travel updates, and manages last-minute changes. From your first quote to journey's end, we ensure seamless communication and are always just a call or message away to accommodate any request.",
       color: "text-orange-600",
       bgColor: "bg-orange-100",
       borderColor: "border-orange-200"
@@ -86,7 +86,7 @@ export default function WhyChooseUs() {
             </h2>
             
             <p className="text-gray-600 leading-relaxed">
-              Experience reliable, comfortable, and affordable group transport with professional service across Belgium.
+              Enjoy reliable, comfortable, and affordable coach hire and minibus rental across Belgium with our professional service.
             </p>
           </div>
           
@@ -177,7 +177,7 @@ export default function WhyChooseUs() {
           {/* Compact Stats */}
           <div className="grid grid-cols-3 gap-3 pt-4">
             <div className="text-center p-3 bg-white/80 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
-              <div className="text-lg font-bold text-blue-600">250K+</div>
+              <div className="text-lg font-bold text-blue-600">350K+</div>
               <div className="text-xs text-gray-600">Passengers</div>
             </div>
             <div className="text-center p-3 bg-white/80 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">

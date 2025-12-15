@@ -2,29 +2,29 @@
 "use client";
 
 import Image from "next/image";
-import { CheckCircle, Users, Shield, Clock, Star } from "lucide-react";
+import { CheckCircle, Users, Shield, Clock, Star, } from "lucide-react";
 
 export default function AboutUs() {
   const features = [
     {
       icon: Users,
-      title: "Expert Team",
-      description: "Professional drivers with years of experience serving Belgium"
+      title: "Expert Drivers & Team",
+      description: "Professional, licensed drivers with extensive knowledge of Belgian roads and years of service experience"
     },
     {
       icon: Shield,
-      title: "Fully Insured",
-      description: "Comprehensive insurance coverage for complete peace of mind"
+      title: "Fully Insured & Compliant",
+      description: "Comprehensive insurance and full compliance with Belgian transport regulations for complete peace of mind"
     },
     {
       icon: Clock,
-      title: "24/7 Service",
-      description: "Round-the-clock availability for your transportation needs"
+      title: "24/7 Service & Support",
+      description: "Round-the-clock availability for bookings, support, and transportation across all of Belgium"
     },
     {
       icon: Star,
-      title: "5-Star Rated",
-      description: "Consistently excellent service recognized by our customers"
+      title: "Consistently Highly Rated",
+      description: "Excellent service consistently recognised by our corporate, private, and educational customers"
     }
   ];
 
@@ -37,13 +37,13 @@ export default function AboutUs() {
             <div className="space-y-4">
               <span className="inline-flex items-center bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
                 <CheckCircle className="h-4 w-4 mr-2" />
-                About Belgium Buses
+                Trusted Transportation Leader
               </span>
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Your Trusted Transportation Partner in Belgium
+                Your Reliable Coach & Minibus Hire Partner in Belgium
               </h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-                At <strong className="text-blue-600">Belgium Buses</strong>, we are proud to be one of the leading providers of reliable, comfortable, and affordable group transportation across Belgium. From Brussels to Antwerp, Ghent to Bruges, we make travel simple with our modern fleet and professional drivers.
+                At <strong className="text-blue-600">Belgium Buses</strong>, we have established ourselves as a leading provider of safe, comfortable, and dependable group transportation across Belgium. From corporate travel in Brussels to school trips in Bruges and private tours in Ghent, our modern fleet and professional team make every journey seamless. We are committed to connecting people and places with reliability, comfort, and exceptional service.
               </p>
             </div>
 
@@ -69,7 +69,7 @@ export default function AboutUs() {
                 <div className="text-sm text-gray-600">Modern Vehicles</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">250K+</div>
+                <div className="text-2xl font-bold text-blue-600">350K+</div>
                 <div className="text-sm text-gray-600">Happy Passengers</div>
               </div>
               <div className="text-center">
@@ -84,7 +84,7 @@ export default function AboutUs() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/images/abtus.png"
-                alt="Belgium Buses modern coach and minibus fleet in Belgium"
+                alt="Belgium Buses modern coach and minibus fleet - Reliable group transport across Belgium"
                 width={600}
                 height={400}
                 className="w-full h-auto"

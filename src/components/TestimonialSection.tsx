@@ -8,65 +8,65 @@ export default function TestimonialSection() {
     {
       key: 'passengers',
       name: "Anne Dubois",
-      role: "Regular Commuter, Brussels",
+      role: "Weekly Commuter, Brussels → Ghent",
       avatar: "avatar1",
-      message: "I travel often between Brussels and Ghent for work. Belgium Buses is always punctual and the coaches are very comfortable.",
+      message: "As someone who travels every Monday and Thursday, I rely on punctuality. Belgium Buses hasn't let me down in 8 months. The 7:15 AM coach is always ready, and I can actually get work done with their reliable WiFi.",
     },
     {
       key: 'passengers',
       name: "Lars De Smet",
-      role: "University Student, Antwerp",
+      role: "Student, University of Antwerp",
       avatar: "avatar2",
-      message: "Affordable and reliable service for students. The drivers are helpful and the WiFi is a big plus.",
+      message: "When my train was cancelled during exams, Belgium Buses got me to my parents in Bruges with just 30 minutes notice. The driver even helped with my heavy suitcase. This kind of flexibility is why I keep coming back.",
     },
     {
       key: 'passengers',
-      name: "Sofie Van Dam",
-      role: "Family Traveller, Bruges",
+      name: "Sofie & Tom Van Dam",
+      role: "Family with young children, Bruges",
       avatar: "avatar3",
-      message: "We used Belgium Buses for a family trip to Bruges — the coach was spotless and the journey was smooth.",
+      message: "Traveling with a 3-year-old and 5-year-old to Pairi Daiza was stressful to plan. The driver was so patient with our stroller, and the kids loved the comfortable seats. We arrived relaxed instead of frazzled!",
     },
     {
       key: 'corporate',
       name: "Michel Laurent",
-      role: "Operations Manager, Brussels",
+      role: "Operations Director, Brussels EU Office",
       avatar: "avatar4",
-      message: "Professional service for our corporate events. Belgium Buses handled everything with precision and care.",
+      message: "We had to transport 45 international delegates from multiple hotels to the conference center for three consecutive days. The coordination was flawless, and the dedicated account manager saved us countless hours of logistics headaches.",
     },
     {
       key: 'corporate',
       name: "Isabelle Meert",
-      role: "HR Director, Antwerp",
+      role: "HR Director, Antwerp Tech Firm",
       avatar: "avatar5",
-      message: "Our conference transport was seamless. The drivers were courteous and the timetable was perfect.",
+      message: "Our annual company retreat to the Ardennes required moving 80 employees. Not only were the coaches spotless and comfortable, but the real-time tracking let us coordinate meal breaks perfectly. Professional from start to finish.",
     },
     {
       key: 'corporate',
       name: "Jonas Verhoeven",
-      role: "Event Coordinator, Ghent",
+      role: "Event Manager, Ghent Conference Center",
       avatar: "avatar6",
-      message: "Great service for events in Ghent. The coaches were comfortable and our delegates were impressed.",
+      message: "Last-minute changes are the norm in events. When we suddenly needed an extra shuttle for 25 VIP guests, Belgium Buses had a coach here within 45 minutes. That responsiveness is why we have a standing contract with them.",
     },
     {
       key: 'school',
-      name: "Mme. Claes",
-      role: "Primary School Teacher, Bruges",
+      name: "Mme. Elke Claes",
+      role: "Year 5 Teacher, St. Mary's Primary, Bruges",
       avatar: "avatar7",
-      message: "Our school trip was organised professionally and safely. The children were comfortable throughout the journey.",
+      message: "The safety briefing the driver gave our class before the trip to the Brussels Natural Sciences Museum put both parents and teachers at ease. Seat belts checked, emergency exits explained - it showed real professionalism.",
     },
     {
       key: 'school',
-      name: "Mr. Janssens",
-      role: "Sports Coach, Liège",
+      name: "Mr. Thomas Janssens",
+      role: "Athletics Director, Liège International School",
       avatar: "avatar8",
-      message: "We use Belgium Buses for away matches. They understand the importance of punctuality and safety.",
+      message: "Transporting 35 teenagers plus sports equipment for away matches is challenging. Their coaches have proper storage for our gear, and the drivers understand we need to arrive energized, not exhausted from travel.",
     },
     {
       key: 'school',
-      name: "Frau Peeters",
-      role: "Headmistress, Leuven",
+      name: "Frau Karin Peeters",
+      role: "Headmistress, Leuven Bilingual Academy",
       avatar: "avatar9",
-      message: "Excellent communication and reliable drivers. Parents were very happy with the service.",
+      message: "We've used three different companies over the years. Belgium Buses stands out because they actually listen. When we requested specific pickup times to match our bell schedule, they made it work without any fuss.",
     },
   ];
 
@@ -80,13 +80,13 @@ export default function TestimonialSection() {
         {/* Header */}
         <div className="flex flex-col items-center mb-12">
           <span className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-sm">
-            Client Testimonials
+            Real Stories from Our Passengers
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            What Our Clients Say
+            Travel Experiences That Speak for Themselves
           </h2>
           <p className="text-gray-600 max-w-2xl text-lg">
-            Don&apos;t just take our word for it. Here&apos;s what our customers have to say about their experience with Belgium Buses.
+            From daily commutes to special events, here&apos;s what people across Belgium are saying about their journeys with us.
           </p>
         </div>
 
@@ -102,7 +102,7 @@ export default function TestimonialSection() {
                 : 'bg-white text-gray-600 border-gray-300 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-300 shadow-sm'
               }`}
             >
-              {key === 'passengers' ? 'From passengers' : key === 'corporate' ? 'From companies' : 'From schools'}
+              {key === 'passengers' ? 'Everyday Travelers' : key === 'corporate' ? 'Business Clients' : 'Schools & Groups'}
             </button>
           ))}
         </div>
@@ -153,8 +153,8 @@ export default function TestimonialSection() {
               ))}
             </div>
             <div className="text-left">
-              <div className="font-semibold text-gray-900">500+ Reviews</div>
-              <div className="text-gray-600 text-sm">Across Belgium</div>
+              <div className="font-semibold text-gray-900">1200+ Reviews</div>
+              <div className="text-gray-600 text-sm">Trusted Across Belgium</div>
             </div>
           </div>
         </div>

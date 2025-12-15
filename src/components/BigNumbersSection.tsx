@@ -36,8 +36,8 @@ export default function StatsSection() {
     if (!isVisible) return;
 
     const targetValues = {
-      passengers: 250000,
-      journeys: 1200,
+      passengers: 350000,
+      journeys: 1300,
       cities: 50,
       rating: 4.9
     };
@@ -109,10 +109,10 @@ export default function StatsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Trusted Across Belgium
+            The Trusted Choice for Bus & Coach Hire in Belgium
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Join thousands of satisfied customers who choose Belgium Buses for their transportation needs
+            Join countless businesses, schools, and travellers across Brussels, Antwerp, and beyond who rely on Belgium Buses for reliable group transport.
           </p>
         </div>
 

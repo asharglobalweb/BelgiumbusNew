@@ -7,22 +7,21 @@ import PartnersSwiper from '../components/Partners'
 import BigNumbersSection from '../components/BigNumbersSection'
 
 export const metadata = {
-  title: "Belgium Bus Rental – Affordable Bus & Coach Hire Services Across Belgium",
-  description:
-    "Belgium Bus Rental offers reliable and affordable bus and coach hire services for groups, tours, corporate travel, airport transfers, school trips, and private events across Belgium. Modern fleet, professional drivers, and nationwide coverage. Get a free quote today!",
+  title: "Belgium Bus Rental and Coach Hire | Modern Fleet, Nationwide Coverage",
+  description: "Need a reliable bus or coach in Belgium? Get affordable, professional rental for corporate events, school trips, airport transfers, and private tours. Modern vehicles & experienced drivers. Get a free, instant quote!",
   keywords: [
-    "Belgium Bus Rental",
-    "bus hire Belgium",
-    "coach hire Belgium",
-    "charter bus Belgium",
-    "rent a bus Belgium",
-    "group transportation Belgium",
-    "private bus Belgium",
-    "tour bus Belgium",
-    "corporate bus rental Belgium",
-    "airport transfer bus Belgium",
+    
+    "bus hire Belgium", "coach hire Belgium", "minibus rental Belgium", "charter bus Belgium",
+    
+    "corporate bus rental Belgium", "airport transfer bus Belgium", "school bus hire Belgium", "private tour bus Belgium",
+    "event transportation Belgium", "Brussels airport shuttle", "group travel Belgium",
+    
+    "executive coach hire", "16 seater minibus", "luxury bus rental", "shuttle bus service",
+   
+    "bus rental Brussels", "coach hire Antwerp", "minibus Ghent", "Bruges tour bus", "Charleroi airport transfer",
+    
+    "reliable bus company", "affordable coach hire", "professional drivers", "modern fleet Belgium"
   ],
- 
 };
 
 export default function Home() {
