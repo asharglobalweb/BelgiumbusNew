@@ -1,10 +1,11 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import WhatsAppButton from "../components/WhatsAppButton";
-import { Toaster } from "sonner"; // ✅ ADD THIS IMPORT
+import { Toaster } from "sonner";
 
 const jostSans = Jost({
   variable: "--font-jost-sans",
@@ -12,8 +13,37 @@ const jostSans = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Belgium Bus Rental and Coach Hire | Modern Fleet, Nationwide Coverage",
-  description: "Need a reliable bus or coach in Belgium? Get affordable, professional rental for corporate events, school trips, airport transfers, and private tours. Modern vehicles & experienced drivers. Get a free, instant quote!",
+  title: {
+    default: "Belgium Bus Rental | Premium Coach & Minibus Charter Services Nationwide",
+    template: "%s | Belgium Bus Rental"
+  },
+  description: "Professional bus and coach rental services across Belgium. Modern fleet, certified drivers, 24/7 support for Brussels, Antwerp, Ghent, Bruges, and all Belgian regions. Corporate transport, airport transfers, and group travel.",
+  keywords: [
+    "bus rental Belgium",
+    "coach hire Belgium",
+    "minibus rental Brussels",
+    "group transport Belgium",
+    "bus charter Antwerp",
+    "Brussels Airport transfer",
+    "corporate bus rental Belgium",
+    "school bus Belgium",
+    "tour bus services Belgium",
+    "private coach charter Belgium",
+    "luxury minibus hire Brussels",
+    "event transportation Belgium",
+    "Belgium transport services",
+    "Flanders bus rental",
+    "Wallonia coach hire",
+    "Belgian group travel",
+    "Brussels MICE transport",
+    "Belgian excursions"
+  ],
+  openGraph: {
+    title: "Belgium Bus Rental | Premium Coach & Minibus Services",
+    description: "Reliable bus and coach rental across all Belgian regions with certified drivers and modern vehicles.",
+    type: "website",
+    locale: "en_BE",
+  }
 };
 
 export default function RootLayout({
@@ -35,7 +65,6 @@ export default function RootLayout({
         <Footer />
         <WhatsAppButton />
         
-        {/* ✅ ADD THIS TOASTER COMPONENT */}
         <Toaster 
           position="top-right"
           expand={false}
