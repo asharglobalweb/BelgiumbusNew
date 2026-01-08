@@ -618,7 +618,7 @@ export default function Contact() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200 rounded-full blur-3xl opacity-20 -translate-y-48 translate-x-48"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-200 rounded-full blur-3xl opacity-20 -translate-x-48 translate-y-48"></div>
 
-        <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
+        <div className="relative max-w-5xl mx-auto px-6 lg:px-8 text-center">
           <div className="space-y-6">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-600 text-sm font-semibold shadow-sm animate-fade-in">
               <MessageCircle className="h-4 w-4 mr-2" />
@@ -627,7 +627,7 @@ export default function Contact() {
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight animate-slide-up">
               Ready to{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                Ready to Book Your Coach or Minibus?
+                Book Your Coach or Minibus?
               </span>
             </h1>
             <p
